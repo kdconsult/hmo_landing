@@ -1,0 +1,665 @@
+<!-- Navigation Header -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-secondary/20">
+  <nav class="max-w-6xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+          <span class="text-white text-xl font-bold">H</span>
+        </div>
+        <span class="text-2xl font-bold text-quaternary">HMO Landing</span>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#features" class="text-gray-600 hover:text-primary transition-colors">Features</a>
+        <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Pricing</a>
+        <a href="#about" class="text-gray-600 hover:text-primary transition-colors">About</a>
+        <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
+      </div>
+      
+      <!-- CTA Buttons -->
+      <div class="hidden md:flex items-center gap-4">
+        <button class="text-quaternary hover:text-primary transition-colors font-medium">
+          Sign In
+        </button>
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+          Get Started
+        </button>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button aria-label="Toggle mobile menu" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu Dropdown -->
+    <div class="mobile-menu hidden md:hidden absolute top-full left-0 right-0 bg-white border-b border-secondary/20 shadow-lg">
+      <div class="px-6 py-4 space-y-4">
+        <a href="#features" class="block text-gray-600 hover:text-primary transition-colors py-2">Features</a>
+        <a href="#pricing" class="block text-gray-600 hover:text-primary transition-colors py-2">Pricing</a>
+        <a href="#about" class="block text-gray-600 hover:text-primary transition-colors py-2">About</a>
+        <a href="#contact" class="block text-gray-600 hover:text-primary transition-colors py-2">Contact</a>
+        <div class="pt-4 border-t border-gray-200">
+          <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="w-full bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-xl font-semibold mb-2">
+            Get Started
+          </button>
+          <button class="w-full text-quaternary hover:text-primary transition-colors font-medium">
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero Section with Urgency -->
+<section data-controller="landing" class="pt-24 relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-senary via-white to-secondary/20 hero-section">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-septenary/10 rounded-full blur-3xl"></div>
+  </div>
+  
+  <div class="relative z-10 text-center max-w-6xl mx-auto px-6">
+    <!-- Urgency Badge -->
+    <div class="inline-flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-full text-sm font-medium mb-8 animate-pulse">
+      <span class="w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+      ⚡ Limited Time: 50% Off Ends Soon
+    </div>
+    
+    <!-- Countdown Timer -->
+    <div class="flex items-center justify-center gap-4 mb-8">
+      <div class="text-center">
+        <div class="text-3xl font-bold text-red-600" id="days">03</div>
+        <div class="text-sm text-gray-500">Days</div>
+      </div>
+      <div class="text-2xl text-gray-400">:</div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-red-600" id="hours">24</div>
+        <div class="text-sm text-gray-500">Hours</div>
+      </div>
+      <div class="text-2xl text-gray-400">:</div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-red-600" id="minutes">00</div>
+        <div class="text-sm text-gray-500">Minutes</div>
+      </div>
+    </div>
+    
+    <!-- Main Headline -->
+    <h1 class="text-5xl md:text-7xl font-bold text-quaternary mb-6 leading-tight">
+      Transform Your
+      <span class="bg-gradient-to-r from-primary to-septenary bg-clip-text text-transparent">
+        Business
+      </span>
+      <br>in Minutes
+    </h1>
+    
+    <!-- Subheadline with FOMO -->
+    <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+      Join <span class="font-semibold text-primary">10,000+</span> businesses already growing with our platform. 
+      <span class="text-red-600 font-medium">Don't miss out on the opportunity of a lifetime!</span>
+    </p>
+    
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+        🚀 Join the Waitlist
+      </button>
+      <button class="border-2 border-quaternary text-quaternary hover:bg-quaternary hover:text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300">
+        📺 Watch Demo
+      </button>
+    </div>
+    
+    <!-- Social Proof -->
+    <div class="flex items-center justify-center gap-8 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <div class="flex -space-x-2">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
+          <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
+        </div>
+        <span>Trusted by 10,000+ users</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex text-yellow-400">★★★★★</div>
+        <span>4.9/5 rating</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-quaternary mb-4">
+        Why Choose Our Platform?
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Built for modern businesses that want to stay ahead of the competition
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="group p-8 rounded-2xl bg-gradient-to-br from-senary to-white border border-secondary/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 feature-card">
+        <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <span class="text-3xl">⚡</span>
+        </div>
+        <h3 class="text-2xl font-bold text-quaternary mb-4">Lightning Fast</h3>
+        <p class="text-gray-600">Get up and running in under 5 minutes. No complex setup required.</p>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="group p-8 rounded-2xl bg-gradient-to-br from-senary to-white border border-secondary/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 feature-card">
+        <div class="w-16 h-16 bg-septenary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <span class="text-3xl">🔒</span>
+        </div>
+        <h3 class="text-2xl font-bold text-quaternary mb-4">Enterprise Security</h3>
+        <p class="text-gray-600">Bank-level security with SOC 2 compliance and 99.9% uptime guarantee.</p>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="group p-8 rounded-2xl bg-gradient-to-br from-senary to-white border border-secondary/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 feature-card">
+        <div class="w-16 h-16 bg-quinary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <span class="text-3xl">📈</span>
+        </div>
+        <h3 class="text-2xl font-bold text-quaternary mb-4">Proven Results</h3>
+        <p class="text-gray-600">Average 3x ROI within the first 90 days of implementation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof Section -->
+<section class="py-20 bg-gradient-to-br from-quaternary to-quinary text-white">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-8">
+      Join Industry Leaders
+    </h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div class="text-center">
+        <div class="text-4xl font-bold text-primary mb-2">$2.1M</div>
+        <div class="text-secondary">Average Revenue Increase</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-primary mb-2">47%</div>
+        <div class="text-secondary">Time Saved Daily</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-primary mb-2">98%</div>
+        <div class="text-secondary">Customer Satisfaction</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-primary mb-2">24/7</div>
+        <div class="text-secondary">Expert Support</div>
+      </div>
+    </div>
+    
+          <!-- Testimonial -->
+      <div class="max-w-3xl mx-auto">
+        <blockquote class="text-xl italic mb-6">
+          "This platform transformed our business operations completely. We've seen a 300% increase in efficiency and our team couldn't be happier."
+        </blockquote>
+        <div class="flex items-center justify-center gap-4">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&crop=face" alt="CEO" class="w-12 h-12 rounded-full">
+          <div class="text-left">
+            <div class="font-semibold">John Smith</div>
+            <div class="text-secondary">CEO, TechCorp</div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gradient-to-br from-white to-senary">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-quaternary mb-4">
+          About Our Platform
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          We're building the future of business automation. Join thousands of forward-thinking companies 
+          who are already transforming their operations with our cutting-edge platform.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-quaternary mb-6">
+            Why We're Different
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-primary text-lg">✓</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-quaternary mb-1">AI-Powered Automation</h4>
+                <p class="text-gray-600">Advanced machine learning algorithms that adapt to your business needs.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-primary text-lg">✓</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-quaternary mb-1">Enterprise Security</h4>
+                <p class="text-gray-600">Bank-level security with SOC 2 compliance and 99.9% uptime guarantee.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-primary text-lg">✓</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-quaternary mb-1">24/7 Expert Support</h4>
+                <p class="text-gray-600">Dedicated support team available around the clock to help you succeed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="bg-gradient-to-br from-primary/10 to-septenary/10 p-8 rounded-2xl">
+            <div class="text-center">
+              <div class="text-6xl mb-4">🚀</div>
+              <h4 class="text-xl font-bold text-quaternary mb-2">Join the Waitlist</h4>
+              <p class="text-gray-600 mb-4">Be among the first to experience the future of business automation.</p>
+              <button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                Get Early Access
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section with Urgency -->
+    <section id="pricing" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-quaternary mb-4">
+        Choose Your Plan
+      </h2>
+      <p class="text-xl text-gray-600">
+        Start free, scale as you grow
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Starter Plan -->
+      <div class="p-8 rounded-2xl border-2 border-gray-200 hover:border-primary transition-all duration-300">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-quaternary mb-2">Starter</h3>
+          <div class="text-4xl font-bold text-primary mb-2">$0</div>
+          <div class="text-gray-500">Forever free</div>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Up to 1,000 users</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Basic analytics</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Email support</span>
+          </li>
+        </ul>
+        <button class="w-full bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
+          Get Started Free
+        </button>
+      </div>
+      
+      <!-- Pro Plan (Featured) -->
+      <div class="relative p-8 rounded-2xl border-2 border-primary bg-gradient-to-br from-primary/5 to-septenary/5 transform scale-105">
+        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          <div class="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold animate-pulse">
+            🔥 MOST POPULAR
+          </div>
+        </div>
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-quaternary mb-2">Pro</h3>
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <span class="text-3xl line-through text-gray-400">$99</span>
+            <span class="text-4xl font-bold text-primary">$49</span>
+            <span class="text-sm text-red-600 font-bold">50% OFF</span>
+          </div>
+          <div class="text-gray-500">Limited time offer</div>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Up to 10,000 users</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Advanced analytics</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Priority support</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Custom integrations</span>
+          </li>
+        </ul>
+        <button class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+          Start Pro Trial
+        </button>
+      </div>
+      
+      <!-- Enterprise Plan -->
+      <div class="p-8 rounded-2xl border-2 border-gray-200 hover:border-primary transition-all duration-300">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-quaternary mb-2">Enterprise</h3>
+          <div class="text-4xl font-bold text-primary mb-2">Custom</div>
+          <div class="text-gray-500">Contact sales</div>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Unlimited users</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Custom solutions</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-green-500">✓</span>
+            <span>Dedicated support</span>
+          </li>
+        </ul>
+        <button class="w-full bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
+          Contact Sales
+        </button>
+      </div>
+    </div>
+    
+    <!-- Urgency Message -->
+    <div class="text-center mt-12 p-6 bg-red-50 border border-red-200 rounded-2xl">
+      <div class="text-red-700 font-semibold text-lg mb-2">
+        ⏰ Limited Time Offer - 50% Off Pro Plan
+      </div>
+      <div class="text-red-600">
+        This exclusive discount ends in <span class="font-bold">3 days</span>. Don't miss out on these incredible savings!
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- Contact Section with Waitlist Form -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-senary to-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-quaternary mb-4">
+          Join the Waitlist
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Be among the first to experience our revolutionary platform. Sign up now and get exclusive early access, 
+          special pricing, and priority support when we launch.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-12 items-start">
+        <!-- Contact Information -->
+        <div>
+          <h3 class="text-2xl font-bold text-quaternary mb-6">
+            Get in Touch
+          </h3>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-2xl">📧</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-quaternary mb-1">Email</h4>
+                <p class="text-gray-600">hello@yourcompany.com</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-2xl">🌐</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-quaternary mb-1">Website</h4>
+                <p class="text-gray-600">www.yourcompany.com</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-2xl">📍</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-quaternary mb-1">Location</h4>
+                <p class="text-gray-600">San Francisco, CA</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Social Links -->
+          <div class="mt-8">
+            <h4 class="font-semibold text-quaternary mb-4">Follow Us</h4>
+            <div class="flex gap-4">
+              <a href="#" class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                <span class="text-lg">🐦</span>
+              </a>
+              <a href="#" class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                <span class="text-lg">💼</span>
+              </a>
+              <a href="#" class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                <span class="text-lg">📘</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Waitlist Form -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-secondary/20 md:col-span-2">
+          <h3 class="text-2xl font-bold text-quaternary mb-6">
+            Join the Waitlist
+          </h3>
+          
+          <form data-controller="waitlist-form" data-action="submit->waitlist-form#submitForm" class="space-y-6">
+            <div>
+              <label for="full_name" class="block text-sm font-medium text-gray-700 mb-2">
+                Full Name *
+              </label>
+              <input 
+                type="text" 
+                id="full_name" 
+                name="full_name" 
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                placeholder="Enter your full name"
+              >
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                Email Address *
+              </label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                placeholder="Enter your email address"
+              >
+            </div>
+            
+            <div>
+              <label for="company" class="block text-sm font-medium text-gray-700 mb-2">
+                Company Name
+              </label>
+              <input 
+                type="text" 
+                id="company" 
+                name="company" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                placeholder="Enter your company name"
+              >
+            </div>
+            
+            <div>
+              <label for="role" class="block text-sm font-medium text-gray-700 mb-2">
+                Job Role
+              </label>
+              <select 
+                id="role" 
+                name="role" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+              >
+                <option value="">Select your role</option>
+                <option value="founder">Founder/CEO</option>
+                <option value="executive">Executive/C-Level</option>
+                <option value="manager">Manager/Director</option>
+                <option value="individual">Individual Contributor</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="use_case" class="block text-sm font-medium text-gray-700 mb-2">
+                Primary Use Case
+              </label>
+              <select 
+                id="use_case" 
+                name="use_case" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+              >
+                <option value="">Select primary use case</option>
+                <option value="automation">Business Process Automation</option>
+                <option value="analytics">Data Analytics & Insights</option>
+                <option value="collaboration">Team Collaboration</option>
+                <option value="customer">Customer Management</option>
+                <option value="operations">Operations Management</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="flex items-start gap-3">
+              <input 
+                type="checkbox" 
+                id="newsletter" 
+                name="newsletter" 
+                class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2"
+              >
+              <label for="newsletter" class="text-sm text-gray-600">
+                I want to receive updates about product launches, exclusive offers, and industry insights.
+              </label>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="w-full bg-primary hover:bg-primary/90 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
+              🚀 Join the Waitlist
+            </button>
+            
+            <p class="text-xs text-gray-500 text-center">
+              By joining the waitlist, you agree to our 
+              <a href="#" class="text-primary hover:underline">Privacy Policy</a> and 
+              <a href="#" class="text-primary hover:underline">Terms of Service</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+<section class="py-20 bg-gradient-to-br from-quaternary to-quinary text-white">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-6">
+      Ready to Join the Future?
+    </h2>
+    <p class="text-xl text-secondary mb-8">
+      Be among the first to experience our revolutionary platform. Join the waitlist now and get exclusive early access.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+        🚀 Join the Waitlist Now
+      </button>
+      <button class="border-2 border-white text-white hover:bg-white hover:text-quaternary px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300">
+        📞 Schedule Demo
+      </button>
+    </div>
+    
+    <div class="text-secondary text-sm">
+      No credit card required • Exclusive early access • Priority support
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 bg-quaternary text-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <h4 class="text-xl font-bold mb-4">Company</h4>
+        <ul class="space-y-2 text-secondary">
+          <li><a href="#" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Press</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-4">Product</h4>
+        <ul class="space-y-2 text-secondary">
+          <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">API</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-4">Support</h4>
+        <ul class="space-y-2 text-secondary">
+          <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Status</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-4">Legal</h4>
+        <ul class="space-y-2 text-secondary">
+          <li><a href="#" class="hover:text-white transition-colors">Privacy</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Terms</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-quinary pt-8 text-center text-secondary">
+      <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Action Button -->
+<div class="fixed bottom-8 right-8 z-40">
+  <button class="bg-primary hover:bg-primary/90 text-white w-16 h-16 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center">
+    <span class="text-2xl">💬</span>
+  </button>
+</div>
+
+<!-- Scroll to Top Button -->
+<button id="scrollToTop" class="fixed bottom-8 left-8 z-40 bg-quaternary hover:bg-quaternary/90 text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 opacity-0 pointer-events-none">
+  <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+  </svg>
+</button>
