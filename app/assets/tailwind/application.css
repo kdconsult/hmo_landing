@@ -36,12 +36,26 @@ html {
   }
 }
 
+@keyframes pulse-bar {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 16px 8px rgba(239, 68, 68, 0.4);
+  }
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-bar {
+  animation: pulse-bar 1.2s infinite;
 }
 
 /* Smooth transitions for all interactive elements */
@@ -153,4 +167,8 @@ a:focus {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.scroll-mt-header {
+  scroll-margin-top: 4rem;
 }

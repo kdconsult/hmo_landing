@@ -1,14 +1,28 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["mobileMenu"]
+  static targets = ["mobileMenu", "hamburger"]
 
   connect() {
     this.setupSmoothScrolling()
-    this.setupMobileMenu()
-    this.setupCountdownTimer()
     this.addFloatingElements()
     this.setupScrollToTop()
+  }
+
+  toggleMobileMenu() {
+    if (this.hasMobileMenuTarget) {
+      this.mobileMenuTarget.classList.toggle('hidden');
+    }
+  }
+
+  closeMobileMenu() {
+    if (this.hasMobileMenuTarget) {
+      setTimeout(() => {
+        this.mobileMenuTarget.classList.add('hidden');
+        this.mobileMenuTarget.classList.remove('block', 'flex');
+      }, 100);
+    }
+    if (this.hasHamburgerTarget) this.hamburgerTarget.blur();
   }
 
   setupSmoothScrolling() {
@@ -25,44 +39,6 @@ export default class extends Controller {
         }
       })
     })
-  }
-
-  setupMobileMenu() {
-    const mobileMenuButton = document.querySelector('[aria-label="Toggle mobile menu"]')
-    const mobileMenu = document.querySelector('.mobile-menu')
-    
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden')
-      })
-    }
-  }
-
-  setupCountdownTimer() {
-    // Set countdown to 3 days from now
-    const endDate = new Date()
-    endDate.setDate(endDate.getDate() + 3)
-    
-    const timer = setInterval(() => {
-      const now = new Date().getTime()
-      const distance = endDate.getTime() - now
-      
-      if (distance < 0) {
-        clearInterval(timer)
-        document.getElementById('days').textContent = '00'
-        document.getElementById('hours').textContent = '00'
-        document.getElementById('minutes').textContent = '00'
-        return
-      }
-      
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-      
-      document.getElementById('days').textContent = days.toString().padStart(2, '0')
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0')
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0')
-    }, 1000)
   }
 
   // Add some interactive elements
