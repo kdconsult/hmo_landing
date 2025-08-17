@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  key: key_one
+  endpoint: ep1
+  request_hash: rh1
+  response_body: {}
+  response_status: 200
+  expires_at: 2099-01-01 00:00:00
+
+two:
+  key: key_two
+  endpoint: ep2
+  request_hash: rh2
+  response_body: {}
+  response_status: 200
+  expires_at: 2099-01-01 00:00:00

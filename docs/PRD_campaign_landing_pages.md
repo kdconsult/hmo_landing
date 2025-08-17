@@ -102,12 +102,13 @@ Lightweight field config (MVP) per landing page:
 - Never log PII in server logs.
 - Support GDPR: allow data export and deletion per user request.
  - Consent capture: require a marketing consent checkbox on all forms. Persist `marketing_consent` (boolean), `consented_at` (datetime), `consent_source` (string/URL), and `privacy_policy_version` (string) at submission time.
- - Implement spam protection:
+  - Implement spam protection:
    - CAPTCHA: Google reCAPTCHA v3; server-side verification; threshold 0.5 (log score; reject < 0.5).
-   - Rate limiting (Rack::Attack):
-     - Per-IP: 10 requests/min (burst allowed), 200/hour.
-     - Per-landing-page: 60 requests/min aggregate.
-     - Temporary IP ban after ≥5 failed CAPTCHA validations within 5 minutes.
+    - Rate limiting (Rack::Attack):
+      - Per-IP: 10 requests/min (burst allowed), 200/hour.
+      - Per-landing-page: 60 requests/min aggregate.
+      - Temporary IP ban after ≥5 failed CAPTCHA validations within 5 minutes.
+      - Implementation notes: Middleware is enabled app-wide; throttles respond with JSON 429 via a centralized responder. Failed reCAPTCHA validations increment a per-IP counter in cache for 5 minutes and trigger a temporary block when ≥5.
    - Bot deterrents: hidden honeypot field (must be empty) and minimum submit time of 1.5s from form render.
    - Email verification: excluded from MVP; consider post‑MVP double opt‑in.
 - Treat IP address and user agent as personal data; restrict retention and access as needed. Avoid storing full referrer if it contains sensitive tokens.
@@ -119,7 +120,7 @@ Lightweight field config (MVP) per landing page:
 - Endpoint: `POST /api/landing_pages/:slug/leads`
 - Authentication: public; protected via reCAPTCHA and rate limiting.
 - Idempotency: accept `Idempotency-Key` header. Duplicate keys within 24h return the original response.
- - Idempotency: accept `Idempotency-Key` header. Duplicate keys within 24h return the original response. Retain idempotency records for 24 hours.
+  - Implementation notes: Dedicated `ApiIdempotencyKey` store persists `(key, endpoint, request_hash)` with the original JSON body and HTTP status. Entries expire after 24 hours and are checked before processing new submissions.
 - Request (example):
 
 ```json
@@ -249,5 +250,5 @@ Encryption & lookup (PII): Provide blind index columns for encrypted fields to e
 - Begin technical design: database migrations, API endpoints, admin UI wireframes.
 - Implement core models and endpoints.
 - Build dynamic form rendering and validation on the frontend.
- - Define rate limiting and idempotency strategy; set up reCAPTCHA verification.
+- Define rate limiting and idempotency strategy; set up reCAPTCHA verification. [DONE]
  - Plan observability (metrics, logs, alerts) and SEO defaults.

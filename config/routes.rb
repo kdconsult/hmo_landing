@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :campaigns
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  namespace :api do
+    post "landing_pages/:slug/leads", to: "leads#create"
+  end
+
   get "/", to: "pages#welcome", as: :welcome
   get "/:slug", to: "pages#home", as: :home
 

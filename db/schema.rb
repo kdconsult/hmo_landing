@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_17_122131) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_17_142737) do
+  create_table "api_idempotency_keys", force: :cascade do |t|
+    t.string "key"
+    t.string "endpoint"
+    t.string "request_hash"
+    t.json "response_body"
+    t.integer "response_status"
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["endpoint", "request_hash"], name: "index_api_idempotency_keys_on_endpoint_and_request_hash"
+    t.index ["expires_at"], name: "index_api_idempotency_keys_on_expires_at"
+    t.index ["key"], name: "index_api_idempotency_keys_on_key", unique: true
+  end
+
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
     t.string "slug"
