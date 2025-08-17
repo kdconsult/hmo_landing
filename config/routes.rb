@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :leads
   resources :landing_pages
   resources :campaigns
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

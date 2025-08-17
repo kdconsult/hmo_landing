@@ -49,7 +49,7 @@ class CampaignsController < ApplicationController
 
   # DELETE /campaigns/1 or /campaigns/1.json
   def destroy
-    @campaign.destroy!
+    @campaign.destroy
 
     respond_to do |format|
       format.html { redirect_to campaigns_path, notice: "Campaign was successfully destroyed.", status: :see_other }

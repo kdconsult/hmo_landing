@@ -1,0 +1,61 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campaign: one
+  landing_page: one
+  public_id: L1
+  name: Alice Example
+  email_ciphertext: <email>
+  phone_ciphertext: <phone>
+  email_bidx: eidx1
+  phone_bidx: pidx1
+  marketing_consent: true
+  consented_at: 2025-08-17 15:21:31
+  consent_source: web
+  privacy_policy_version: v1
+  data: {}
+  utm_source: ads
+  utm_medium: cpc
+  utm_campaign: q3
+  utm_term: alpha
+  utm_content: creative1
+  gclid: g1
+  fbclid: f1
+  msclkid: m1
+  referrer_url: https://ref.example
+  landing_url: https://landing.example
+  user_agent: UA
+  ip_address: 1.1.1.1
+  referral_code: RC1
+  idempotency_key: IK1
+  schema_version_at_submit: 1
+
+two:
+  campaign: two
+  landing_page: two
+  public_id: L2
+  name: Bob Example
+  email_ciphertext: <email>
+  phone_ciphertext: <phone>
+  email_bidx: eidx2
+  phone_bidx: pidx2
+  marketing_consent: false
+  consented_at: 2025-08-17 15:21:31
+  consent_source: web
+  privacy_policy_version: v1
+  data: {}
+  utm_source: social
+  utm_medium: cpc
+  utm_campaign: q4
+  utm_term: beta
+  utm_content: creative2
+  gclid: g2
+  fbclid: f2
+  msclkid: m2
+  referrer_url: https://ref2.example
+  landing_url: https://landing2.example
+  user_agent: UA
+  ip_address: 2.2.2.2
+  referral_code: RC2
+  idempotency_key: IK2
+  schema_version_at_submit: 1

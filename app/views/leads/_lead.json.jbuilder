@@ -1,0 +1,2 @@
+json.extract! lead, :id, :campaign_id, :landing_page_id, :public_id, :name, :email_ciphertext, :phone_ciphertext, :email_bidx, :phone_bidx, :marketing_consent, :consented_at, :consent_source, :privacy_policy_version, :data, :utm_source, :utm_medium, :utm_campaign, :utm_term, :utm_content, :gclid, :fbclid, :msclkid, :referrer_url, :landing_url, :user_agent, :ip_address, :referral_code, :idempotency_key, :schema_version_at_submit, :created_at, :updated_at
+json.url lead_url(lead, format: :json)

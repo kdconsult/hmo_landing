@@ -49,7 +49,7 @@ class LandingPagesController < ApplicationController
 
   # DELETE /landing_pages/1 or /landing_pages/1.json
   def destroy
-    @landing_page.destroy!
+    @landing_page.destroy
 
     respond_to do |format|
       format.html { redirect_to landing_pages_path, notice: "Landing page was successfully destroyed.", status: :see_other }

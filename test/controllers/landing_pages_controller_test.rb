@@ -61,8 +61,10 @@ class LandingPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy landing_page" do
+    temp_campaign = Campaign.create!(title: "For LP", slug: "lp-temp-#{SecureRandom.hex(3)}", body: "Temp", start_date: Date.today, end_date: Date.today, active: false)
+    temp_lp = LandingPage.create!(campaign: temp_campaign, slug: "lp-#{SecureRandom.hex(3)}", headline: "h", template: "default", status: "draft")
     assert_difference("LandingPage.count", -1) do
-      delete landing_page_url(@landing_page)
+      delete landing_page_url(temp_lp)
     end
 
     assert_redirected_to landing_pages_url

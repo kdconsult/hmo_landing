@@ -1,0 +1,100 @@
+<div id="<%= dom_id lead %>" class="w-full">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Campaign</div>
+      <div class="text-gray-900 dark:text-gray-100 font-medium"><%= lead.campaign&.title %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Landing page</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.landing_page&.headline %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Public ID</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.public_id %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Name</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.name %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Marketing consent</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.marketing_consent? ? "Yes" : "No" %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Consented at</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.consented_at || "—" %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Consent source</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.consent_source || "—" %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Privacy policy version</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.privacy_policy_version || "—" %></div>
+    </div>
+    <div class="space-y-2 md:col-span-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Custom data</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.data.to_json %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">UTM Source</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.utm_source %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">UTM Medium</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.utm_medium %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">UTM Campaign</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.utm_campaign %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">UTM Term</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.utm_term %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">UTM Content</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.utm_content %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">GCLID</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.gclid %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">FBCLID</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.fbclid %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">MSCLKID</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.msclkid %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Referrer URL</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.referrer_url %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Landing URL</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.landing_url %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">User Agent</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.user_agent %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">IP Address</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.ip_address %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Referral Code</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.referral_code %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Idempotency Key</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.idempotency_key %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Schema version at submit</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= lead.schema_version_at_submit %></div>
+    </div>
+  </div>
+</div>

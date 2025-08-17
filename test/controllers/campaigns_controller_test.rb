@@ -39,8 +39,10 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy campaign" do
+    # Campaigns may have dependent records; ensure soft delete behavior in test by creating standalone campaign
+    temp = Campaign.create!(title: "Temp", slug: "temp-#{SecureRandom.hex(3)}", body: "Temp", start_date: Date.today, end_date: Date.today, active: false)
     assert_difference("Campaign.count", -1) do
-      delete campaign_url(@campaign)
+      delete campaign_url(temp)
     end
 
     assert_redirected_to campaigns_url

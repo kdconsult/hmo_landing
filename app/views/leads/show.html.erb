@@ -1,0 +1,39 @@
+<% content_for :title, "Showing lead" %>
+
+<div class="min-h-screen bg-gray-50 dark:bg-gray-950 py-10">
+  <div class="max-w-2xl mx-auto px-4">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 dark:bg-green-900 mb-5 text-green-500 dark:text-green-300 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <div class="bg-white dark:bg-gray-900 rounded-2xl shadow border border-secondary/20 dark:border-secondary/60 p-8">
+      <h1 class="font-bold text-2xl text-quaternary dark:text-white mb-6 flex items-center gap-2">
+        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+        Lead Details
+      </h1>
+      <div class="space-y-6 divide-y divide-secondary/20 dark:divide-secondary/60">
+        <div class="flex items-center gap-4 pt-0">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Campaign:</span>
+          <span class="text-gray-900 dark:text-gray-100"><%= @lead.campaign&.title %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Landing Page:</span>
+          <span class="text-gray-700 dark:text-gray-300"><%= @lead.landing_page&.headline %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Name:</span>
+          <span class="text-gray-700 dark:text-gray-300"><%= @lead.name %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Created:</span>
+          <span class="text-gray-700 dark:text-gray-300"><%= l(@lead.created_at, format: :long) %></span>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 mt-8">
+        <%= link_to "Edit", edit_lead_path(@lead), class: "w-full sm:w-auto text-center rounded-xl px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300" %>
+        <%= link_to "Back to leads", leads_path, class: "w-full sm:w-auto text-center rounded-xl px-6 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-quaternary dark:text-white font-medium transition-all duration-300" %>
+        <%= button_to "Delete", @lead, method: :delete, class: "w-full sm:w-auto rounded-xl px-6 py-3 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer transition-all duration-300", data: { turbo_confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  </div>
+</div>
