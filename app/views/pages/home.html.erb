@@ -3,12 +3,12 @@
   <nav class="max-w-6xl mx-auto px-6 py-4" data-controller="landing">
     <div class="flex items-center justify-between">
       <!-- Logo -->
-      <div class="flex items-center gap-3">
+      <a href="/" class="flex items-center gap-3">
         <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
           <span class="text-white text-xl font-bold">H</span>
         </div>
         <span class="text-2xl font-bold text-quaternary">HMO Landing</span>
-      </div>
+      </a>
       
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
@@ -58,7 +58,7 @@
     <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
     <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-septenary/10 rounded-full blur-3xl"></div>
   </div>
-  
+
   <div class="relative z-10 text-center max-w-3xl mx-auto px-6">
     <!-- Urgency Badge -->
     <div class="relative inline-flex items-center bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
@@ -84,6 +84,11 @@
       Secure Your <span class="bg-gradient-to-r from-primary to-septenary bg-clip-text text-transparent">Early Access</span>
     </h1>
     
+    <div class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
+      <%= @campaign.body %>
+  <%= @ref %>
+    </div>
+
     <!-- Subheadline with FOMO -->
     <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
       Be one of the <span class="font-semibold text-primary">first 100</span> to unlock exclusive access and a <span class="text-red-600 font-bold">50% off coupon</span> for your first year. Don’t let this once-in-a-lifetime opportunity slip away!

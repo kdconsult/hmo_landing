@@ -3,7 +3,6 @@ import { Controller } from "@hotwired/stimulus"
 const MAX_SPOTS = 100;
 const COUPON_CODE = "EARLY50";
 
-// let spotsRemaining = 1;
 let spotsRemaining = MAX_SPOTS;
 let joinedToday = 37 + Math.floor(Math.random() * 20); // Simulate social proof
 let currentReferralCode = null; // Store the code for the current session

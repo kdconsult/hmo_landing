@@ -3,14 +3,14 @@ class Campaign < ApplicationRecord
   validates :body, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :active, inclusion: { in: [true, false] }
+  validates :active, inclusion: { in: [ true, false ] }
 
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
   scope :upcoming, -> { where("start_date >= ?", Date.today) }
   scope :past, -> { where("end_date < ?", Date.today) }
 
-  before_create :set_slug
+  before_save :set_slug
 
   def self.current
     active.where("start_date <= ? AND end_date >= ?", Date.today, Date.today).order(start_date: :asc)
@@ -22,10 +22,6 @@ class Campaign < ApplicationRecord
 
   def self.past
     active.where("end_date < ?", Date.today).order(end_date: :desc)
-  end
-
-  def self.inactive
-    active.where(active: false)
   end
 
   private
