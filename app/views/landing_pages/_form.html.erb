@@ -1,0 +1,87 @@
+<%= form_with(model: landing_page, class: "space-y-8") do |form| %>
+  <% if landing_page.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 dark:bg-red-900 text-red-500 dark:text-red-300 px-4 py-3 font-medium rounded-md mb-6">
+      <h2><%= pluralize(landing_page.errors.count, "error") %> prohibited this landing_page from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% landing_page.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="relative">
+      <%= form.collection_select :campaign_id, Campaign.all, :id, :title, { prompt: "Select campaign" }, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all" %>
+      <%= form.label :campaign_id, "Campaign", class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm" %>
+    </div>
+    <div class="relative">
+      <%= form.text_field :name, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :name, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="relative">
+      <%= form.text_field :headline, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :headline, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+    <div class="relative">
+      <%= form.text_field :subheadline, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :subheadline, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+  </div>
+
+  <div class="relative">
+    <%= form.text_area :body, rows: 4, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all resize-none", placeholder: " " %>
+    <%= form.label :body, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="relative">
+      <%= form.text_field :primary_cta_label, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :primary_cta_label, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+    <div class="relative">
+      <%= form.text_field :primary_cta_url, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :primary_cta_url, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="relative">
+      <%= form.text_field :slug, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :slug, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+    <div class="relative">
+      <%= form.text_field :template, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :template, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="relative">
+      <%= form.select :status, options_for_select(LandingPage::STATUSES, selected: landing_page.status), {}, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all" %>
+      <%= form.label :status, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm" %>
+    </div>
+    <div class="relative">
+      <%= form.number_field :schema_version, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :schema_version, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+  </div>
+
+  <div class="relative">
+    <%= form.text_area :schema, rows: 6, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all resize-none", placeholder: " {\n  \"schema_version\": 1,\n  \"fields\": []\n }" %>
+    <%= form.label :schema, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+  </div>
+
+  <div class="relative">
+    <%= form.datetime_field :published_at, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+    <%= form.label :published_at, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-2 mt-8">
+    <%= form.submit class: "w-full sm:w-auto rounded-xl px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300" %>
+  </div>
+<% end %>

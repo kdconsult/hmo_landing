@@ -1,0 +1,38 @@
+<div id="<%= dom_id landing_page %>" class="w-full">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Campaign</div>
+      <div class="text-gray-900 dark:text-gray-100 font-medium"><%= landing_page.campaign&.title %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Headline</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= landing_page.headline %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Slug</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= landing_page.slug %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Template</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= landing_page.template %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Status</div>
+      <div>
+        <% if landing_page.status == "published" %>
+          <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300">Published</span>
+        <% else %>
+          <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300">Draft</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Schema version</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= landing_page.schema_version || "—" %></div>
+    </div>
+    <div class="space-y-2">
+      <div class="text-sm text-quaternary dark:text-white font-semibold">Published at</div>
+      <div class="text-gray-700 dark:text-gray-300"><%= landing_page.published_at || "—" %></div>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,7 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create campaign" do
     assert_difference("Campaign.count") do
-      post campaigns_url, params: { campaign: { active: @campaign.active, body: @campaign.body, end_date: @campaign.end_date, slug: @campaign.slug, start_date: @campaign.start_date, title: @campaign.title } }
+      post campaigns_url, params: { campaign: { active: @campaign.active, body: @campaign.body, end_date: @campaign.end_date, slug: "unique-slug-#{SecureRandom.hex(4)}", start_date: @campaign.start_date, title: "New Campaign #{SecureRandom.hex(2)}" } }
     end
 
     assert_redirected_to campaign_url(Campaign.last)

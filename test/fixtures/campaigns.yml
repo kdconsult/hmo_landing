@@ -1,16 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  slug: MyString
+  title: Campaign One
+  slug: campaign-one
   body: MyText
   start_date: 2025-08-14
   end_date: 2025-08-14
   active: false
 
 two:
-  title: MyString
-  slug: MyString
+  title: Campaign Two
+  slug: campaign-two
   body: MyText
   start_date: 2025-08-14
   end_date: 2025-08-14

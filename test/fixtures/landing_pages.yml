@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campaign: one
+  slug: summer
+  headline: Summer Campaign
+  subheadline: Big savings
+  body: Great offers available now.
+  primary_cta_label: Sign Up
+  primary_cta_url: https://example.com/signup
+  template: default
+  status: draft
+  schema: {}
+  schema_version: 1
+  published_at: 2025-08-17 15:21:31
+
+two:
+  campaign: two
+  slug: winter
+  headline: Winter Campaign
+  subheadline: Cozy deals
+  body: Save big this winter.
+  primary_cta_label: Learn More
+  primary_cta_url: https://example.com/learn
+  template: default
+  status: draft
+  schema: {}
+  schema_version: 1
+  published_at: 2025-08-17 15:21:31

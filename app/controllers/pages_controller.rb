@@ -13,7 +13,13 @@ class PagesController < ApplicationController
     if @campaign.nil?
       redirect_to root_path and return
     end
-    render :home
+    landing_page = @campaign.landing_page
+    if landing_page&.status == "published" && landing_page.template.present?
+      # Render custom template from app/views/pages/<template>.html.erb
+      render template: "pages/#{landing_page.template}"
+    else
+      render :home
+    end
   end
 
   def welcome
