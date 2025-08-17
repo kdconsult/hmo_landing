@@ -1,9 +1,16 @@
 <% content_for :title, "New campaign" %>
 
-<div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New campaign</h1>
-
-  <%= render "form", campaign: @campaign %>
-
-  <%= link_to "Back to campaigns", campaigns_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+<div class="min-h-screen bg-gray-50 dark:bg-gray-950 py-10">
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl shadow border border-secondary/20 dark:border-secondary/60 p-8">
+      <h1 class="font-bold text-2xl text-quaternary dark:text-white mb-6 flex items-center gap-2">
+        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        New Campaign
+      </h1>
+      <%= render "form", campaign: @campaign %>
+      <div class="flex flex-col sm:flex-row gap-2 mt-8">
+        <%= link_to "Back to campaigns", campaigns_path, class: "w-full sm:w-auto text-center rounded-xl px-6 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-quaternary dark:text-white font-medium transition-all duration-300" %>
+      </div>
+    </div>
+  </div>
 </div>

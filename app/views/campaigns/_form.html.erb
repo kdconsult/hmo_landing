@@ -1,8 +1,7 @@
-<%= form_with(model: campaign, class: "contents") do |form| %>
+<%= form_with(model: campaign, class: "space-y-8") do |form| %>
   <% if campaign.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+    <div id="error_explanation" class="bg-red-50 dark:bg-red-900 text-red-500 dark:text-red-300 px-4 py-3 font-medium rounded-md mb-6">
       <h2><%= pluralize(campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
-
       <ul class="list-disc ml-6">
         <% campaign.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,37 +10,39 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": campaign.errors[:title].none?, "border-red-400 focus:outline-red-600": campaign.errors[:title].any?}] %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="relative">
+      <%= form.text_field :title, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :title, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+    <div class="relative">
+      <%= form.text_field :slug, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :slug, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
   </div>
 
-  <div class="my-5">
-    <%= form.label :slug %>
-    <%= form.text_field :slug, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": campaign.errors[:slug].none?, "border-red-400 focus:outline-red-600": campaign.errors[:slug].any?}] %>
+  <div class="relative">
+    <%= form.text_area :body, rows: 4, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all resize-none", placeholder: " " %>
+    <%= form.label :body, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :body %>
-    <%= form.textarea :body, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": campaign.errors[:body].none?, "border-red-400 focus:outline-red-600": campaign.errors[:body].any?}] %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="relative">
+      <%= form.date_field :start_date, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :start_date, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
+    <div class="relative">
+      <%= form.date_field :end_date, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :end_date, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+    </div>
   </div>
 
-  <div class="my-5">
-    <%= form.label :start_date %>
-    <%= form.date_field :start_date, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": campaign.errors[:start_date].none?, "border-red-400 focus:outline-red-600": campaign.errors[:start_date].any?}] %>
+  <div class="flex items-center gap-3 mt-2">
+    <%= form.check_box :active, class: "rounded border-gray-300 dark:border-gray-700 text-primary focus:ring-primary focus:ring-2 w-5 h-5 bg-white dark:bg-gray-800" %>
+    <%= form.label :active, class: "text-sm text-quaternary dark:text-white" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :end_date %>
-    <%= form.date_field :end_date, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": campaign.errors[:end_date].none?, "border-red-400 focus:outline-red-600": campaign.errors[:end_date].any?}] %>
-  </div>
-
-  <div class="my-5 flex items-center gap-2">
-    <%= form.label :active %>
-    <%= form.checkbox :active, class: ["block shadow-sm rounded-md border order-first h-5 w-5", {"border-gray-400 focus:outline-blue-600": campaign.errors[:active].none?, "border-red-400 focus:outline-red-600": campaign.errors[:active].any?}] %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex flex-col sm:flex-row gap-2 mt-8">
+    <%= form.submit class: "w-full sm:w-auto rounded-xl px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300" %>
   </div>
 <% end %>

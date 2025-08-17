@@ -1,15 +1,51 @@
 <% content_for :title, "Showing campaign" %>
 
-<div class="md:w-2/3 w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<div class="min-h-screen bg-gray-50 dark:bg-gray-950 py-10">
+  <div class="max-w-2xl mx-auto px-4">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 dark:bg-green-900 mb-5 text-green-500 dark:text-green-300 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <% end %>
 
-  <h1 class="font-bold text-4xl">Showing campaign</h1>
-
-  <%= render @campaign %>
-
-  <%= link_to "Edit this campaign", edit_campaign_path(@campaign), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to campaigns", campaigns_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= button_to "Destroy this campaign", @campaign, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+    <div class="bg-white dark:bg-gray-900 rounded-2xl shadow border border-secondary/20 dark:border-secondary/60 p-8">
+      <h1 class="font-bold text-2xl text-quaternary dark:text-white mb-6 flex items-center gap-2">
+        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+        Campaign Details
+      </h1>
+      <div class="space-y-6 divide-y divide-secondary/20 dark:divide-secondary/60">
+        <div class="flex items-center gap-4 pt-0">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Title:</span>
+          <span class="text-gray-900 dark:text-gray-100"><%= @campaign.title %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Slug:</span>
+          <span class="text-gray-700 dark:text-gray-300"><%= @campaign.slug %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Body:</span>
+          <span class="text-gray-700 dark:text-gray-300"><%= @campaign.body %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Start Date:</span>
+          <span class="text-gray-700 dark:text-gray-300"><%= @campaign.start_date %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">End Date:</span>
+          <span class="text-gray-700 dark:text-gray-300"><%= @campaign.end_date %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Active:</span>
+          <% if @campaign.active? %>
+            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300">Active</span>
+          <% else %>
+            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300">Inactive</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 mt-8">
+        <%= link_to "Edit", edit_campaign_path(@campaign), class: "w-full sm:w-auto text-center rounded-xl px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300" %>
+        <%= link_to "Back to campaigns", campaigns_path, class: "w-full sm:w-auto text-center rounded-xl px-6 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-quaternary dark:text-white font-medium transition-all duration-300" %>
+        <%= button_to "Delete", @campaign, method: :delete, class: "w-full sm:w-auto rounded-xl px-6 py-3 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer transition-all duration-300", data: { turbo_confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  </div>
 </div>
