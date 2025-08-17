@@ -60,11 +60,11 @@ class CampaignsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_campaign
-      @campaign = Campaign.find(params.expect(:id))
+      @campaign = Campaign.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def campaign_params
-      params.expect(campaign: [ :title, :slug, :body, :start_date, :end_date, :active ])
+      params.require(:campaign).permit(:title, :slug, :body, :start_date, :end_date, :active)
     end
 end

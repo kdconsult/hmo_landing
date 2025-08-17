@@ -7,22 +7,25 @@ class Campaign < ApplicationRecord
 
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
-  scope :upcoming, -> { where("start_date >= ?", Date.today) }
-  scope :past, -> { where("end_date < ?", Date.today) }
+  scope :current, -> {
+    where(active: true)
+      .where("start_date <= ? AND end_date >= ?", Date.current, Date.current)
+      .order(start_date: :asc)
+  }
+  scope :upcoming, -> {
+    where(active: true)
+      .where("start_date > ?", Date.current)
+      .order(start_date: :asc)
+  }
+  scope :past, -> {
+    where(active: true)
+      .where("end_date < ?", Date.current)
+      .order(end_date: :desc)
+  }
 
   before_save :set_slug
 
-  def self.current
-    active.where("start_date <= ? AND end_date >= ?", Date.today, Date.today).order(start_date: :asc)
-  end
-
-  def self.upcoming
-    active.where("start_date > ?", Date.today).order(start_date: :asc)
-  end
-
-  def self.past
-    active.where("end_date < ?", Date.today).order(end_date: :desc)
-  end
+  # Scopes above define current, upcoming, and past
 
   private
 
