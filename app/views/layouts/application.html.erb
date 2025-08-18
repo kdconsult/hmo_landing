@@ -23,7 +23,10 @@
   </head>
 
   <body>
-    <main>
+    <% unless controller.controller_name == 'pages' %>
+      <%= render 'shared/header' %>
+    <% end %>
+    <main class="<%= controller.controller_name == 'pages' ? 'pt-0': 'pt-18' %>">
       <%= yield %>
     </main>
   </body>
