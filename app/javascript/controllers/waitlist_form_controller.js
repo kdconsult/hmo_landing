@@ -7,6 +7,14 @@ let spotsRemaining = MAX_SPOTS;
 let joinedToday = 0;
 let currentReferralCode = null; // Store the code for the current session
 let leads = [];
+let currentIdempotencyKey = null;
+
+function generateIdempotencyKey() {
+  if (window.crypto && window.crypto.randomUUID) {
+    return window.crypto.randomUUID();
+  }
+  return 'idemp-' + Math.random().toString(36).slice(2) + Date.now();
+}
 
 function isToday(dateString) {
   const d = new Date(dateString);
@@ -194,13 +202,40 @@ export default class extends Controller {
         core,
         recaptcha_token: '', // Add recaptcha if needed
       };
+      if (!currentIdempotencyKey) {
+        currentIdempotencyKey = generateIdempotencyKey();
+      }
       const res = await fetch(`/api/landing_pages/${this.slug}/leads`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Idempotency-Key': currentIdempotencyKey
         },
         body: JSON.stringify(payload)
       });
+      if (res.status === 422) {
+        const data = await res.json();
+        if (data.errors) {
+          let errorMsg = '';
+          if (data.errors.email_ciphertext && data.errors.email_ciphertext.length > 0) {
+            errorMsg += data.errors.email_ciphertext.join(' ');
+            this.showFieldError(this.form.querySelector('input[name="email"]'), data.errors.email_ciphertext[0]);
+          }
+          if (data.errors.phone_ciphertext && data.errors.phone_ciphertext.length > 0) {
+            if (errorMsg) errorMsg += ' ';
+            errorMsg += data.errors.phone_ciphertext.join(' ');
+            this.showFieldError(this.form.querySelector('input[name="phone"]'), data.errors.phone_ciphertext[0]);
+          }
+          if (data.errors.marketing_consent && data.errors.marketing_consent.length > 0) {
+            if (errorMsg) errorMsg += ' ';
+            errorMsg += data.errors.marketing_consent.join(' ');
+          }
+          this.errorDiv.textContent = errorMsg || 'Please check your input.';
+        } else {
+          this.errorDiv.textContent = 'Please check your input.';
+        }
+        return;
+      }
       if (!res.ok) throw new Error('Failed to submit');
       // Update local state
       const now = new Date();
@@ -220,6 +255,7 @@ export default class extends Controller {
       this.errorDiv.textContent = 'Something went wrong. Please try again.';
     } finally {
       this.hideLoadingState();
+      currentIdempotencyKey = null;
     }
   }
 

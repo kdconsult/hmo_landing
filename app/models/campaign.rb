@@ -7,6 +7,9 @@ class Campaign < ApplicationRecord
   validates :end_date, presence: true
   validates :active, inclusion: { in: [ true, false ] }
 
+  # Allow duplicate leads (email/phone) if true, default false
+  attribute :allow_duplicate_leads, :boolean, default: false
+
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
   scope :current, -> {
@@ -26,8 +29,6 @@ class Campaign < ApplicationRecord
   }
 
   before_save :set_slug
-
-  # Scopes above define current, upcoming, and past
 
   private
 
