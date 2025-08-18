@@ -1,5 +1,6 @@
 class Campaign < ApplicationRecord
   has_one :landing_page, dependent: :destroy
+  has_many :leads, dependent: :restrict_with_error
   validates :title, presence: true
   validates :body, presence: true
   validates :start_date, presence: true

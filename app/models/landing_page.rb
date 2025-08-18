@@ -1,5 +1,6 @@
 class LandingPage < ApplicationRecord
   belongs_to :campaign
+  has_many :leads, dependent: :restrict_with_error
 
   STATUSES = %w[draft published].freeze
 

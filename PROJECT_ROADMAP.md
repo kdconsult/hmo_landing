@@ -36,3 +36,34 @@ Refactor all admin campaign views to use the latest 2025 design trends: modern, 
 5. Refactor \_campaign.html.erb for card consistency if needed.
 6. Review with user, iterate as needed.
 7. Update documentation as changes are made.
+
+## Waitlist Spots & Leads API Integration (2024-06)
+
+### Goal
+
+Implement a robust, efficient system for tracking and displaying "spots remaining" and "joined today" on the landing page waitlist, using real backend data and minimal API calls.
+
+### Scope
+
+- Add a GET /api/landing_pages/:slug/leads endpoint to return all leads for a given landing page (with only id and created_at fields).
+- Update the Stimulus controller (waitlist_form_controller.js) to:
+  - Fetch all leads for the landing page on connect.
+  - Calculate spots remaining as MAX_SPOTS (constant in JS) minus the number of leads returned.
+  - Calculate joined today by filtering leads by today's date.
+  - Track spots and joined today locally after the initial fetch (no polling).
+  - On form submit, POST to the API, and on success, update local state and UI accordingly.
+
+### Requirements
+
+- Backend must expose only the necessary data (id, created_at) for privacy and performance.
+- Frontend must not poll or refetch after the initial load; all state changes after are local.
+- Must be robust to race conditions (occasional overbooking is acceptable for this use case).
+- All changes must be documented in this roadmap and explained to the user after implementation.
+
+### Next Steps
+
+1. Update routes.rb to add the GET endpoint.
+2. Implement the index action in Api::LeadsController.
+3. Update waitlist_form_controller.js to use the new API and local state logic.
+4. Review with user, iterate as needed.
+5. Update documentation as changes are made.

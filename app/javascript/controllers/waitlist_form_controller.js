@@ -4,11 +4,20 @@ const MAX_SPOTS = 100;
 const COUPON_CODE = "EARLY50";
 
 let spotsRemaining = MAX_SPOTS;
-let joinedToday = 37 + Math.floor(Math.random() * 20); // Simulate social proof
+let joinedToday = 0;
 let currentReferralCode = null; // Store the code for the current session
+let leads = [];
+
+function isToday(dateString) {
+  const d = new Date(dateString);
+  const now = new Date();
+  return d.getFullYear() === now.getFullYear() &&
+         d.getMonth() === now.getMonth() &&
+         d.getDate() === now.getDate();
+}
 
 export default class extends Controller {
-  connect() {
+  async connect() {
     this.form = document.getElementById("waitlist-form");
     this.successDiv = document.getElementById("waitlist-success");
     this.errorDiv = document.getElementById("waitlist-error");
@@ -18,10 +27,27 @@ export default class extends Controller {
     this.progressBar = document.getElementById("spots-progress");
     this.heroJoined = document.getElementById("joined-today");
     this.spotsMessage = document.getElementById("spots-message");
+
+    // Get slug from data attribute or global variable
+    this.slug = this.form?.dataset.slug || window.landingPageSlug;
+    await this.fetchLeadsAndUpdateState();
     this.updateSpotsUI();
     this.heroJoined.textContent = joinedToday;
     this.setupFormValidation();
-    // Removed manual form.addEventListener('submit', ...) to avoid double handling
+  }
+
+  async fetchLeadsAndUpdateState() {
+    if (!this.slug) return;
+    try {
+      const res = await fetch(`/api/landing_pages/${this.slug}/leads`);
+      if (!res.ok) throw new Error("Failed to fetch leads");
+      leads = await res.json();
+      spotsRemaining = MAX_SPOTS - leads.length;
+      joinedToday = leads.filter(l => isToday(l.created_at)).length;
+    } catch (e) {
+      spotsRemaining = MAX_SPOTS;
+      joinedToday = 0;
+    }
   }
 
   setupFormValidation() {
@@ -120,6 +146,9 @@ export default class extends Controller {
         this.fomoDiv.textContent = '';
       }
     }
+    if (this.heroJoined) {
+      this.heroJoined.textContent = joinedToday;
+    }
   }
 
   showLoadingState() {
@@ -153,20 +182,36 @@ export default class extends Controller {
     if (!isValid) return;
     this.showLoadingState();
     try {
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      // Decrement spots if available
-      let spotSecured = false;
-      if (spotsRemaining > 0) {
-        spotsRemaining--;
-        spotSecured = true;
-      }
-      // Generate a random referral code for this signup
+      // Prepare payload (customize as needed)
+      const formData = new FormData(this.form);
+      const core = {
+        name: formData.get('full_name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        marketing_consent: true
+      };
+      const payload = {
+        core,
+        recaptcha_token: '', // Add recaptcha if needed
+      };
+      const res = await fetch(`/api/landing_pages/${this.slug}/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Failed to submit');
+      // Update local state
+      const now = new Date();
+      leads.push({ id: Date.now(), created_at: now.toISOString() });
+      spotsRemaining = Math.max(0, spotsRemaining - 1);
+      if (isToday(now.toISOString())) joinedToday++;
+      let spotSecured = spotsRemaining >= 0;
       currentReferralCode = this.generateReferralCode();
       this.updateSpotsUI();
       this.form.reset();
       this.showSuccess(spotSecured);
-      // Scroll the success div into view
       setTimeout(() => {
         const el = document.getElementById('waitlist-success');
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });

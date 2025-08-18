@@ -4,7 +4,6 @@ class Api::LeadsController < ApplicationController
   # POST /api/landing_pages/:slug/leads
   def create
     landing_page = LandingPage.published.find_by!(slug: params[:slug])
-    campaign = landing_page.campaign
 
     # Idempotency by header (retain for 24h) – naive in-memory for now via table
     idempotency_key = request.headers["Idempotency-Key"].presence
@@ -16,7 +15,7 @@ class Api::LeadsController < ApplicationController
       end
     end
 
-    payload = params.permit(:recaptcha_token, :ref, core: [:name, :email, :phone, :marketing_consent], custom: {}, utm: [:utm_source, :utm_medium, :utm_campaign, :utm_term, :utm_content])
+    payload = params.permit(:recaptcha_token, :ref, core: [ :name, :email, :phone, :marketing_consent ], custom: {}, utm: [ :utm_source, :utm_medium, :utm_campaign, :utm_term, :utm_content ])
 
     # Verify reCAPTCHA v3 (expects ENV variables set)
     unless verify_recaptcha_v3(payload[:recaptcha_token])
@@ -29,11 +28,11 @@ class Api::LeadsController < ApplicationController
     utm = payload[:utm] || {}
 
     if ActiveModel::Type::Boolean.new.cast(core[:marketing_consent]) != true
-      render json: { errors: { marketing_consent: ["must be accepted"] } }, status: :unprocessable_entity and return
+      render json: { errors: { marketing_consent: [ "must be accepted" ] } }, status: :unprocessable_entity and return
     end
 
     lead = Lead.new(
-      campaign: campaign,
+      campaign: landing_page.campaign,
       landing_page: landing_page,
       public_id: SecureRandom.uuid,
       name: core[:name],
@@ -56,13 +55,13 @@ class Api::LeadsController < ApplicationController
       landing_url: request.original_url,
       user_agent: request.user_agent,
       ip_address: request.remote_ip,
-      referral_code: generate_referral_code(campaign),
+      referral_code: generate_referral_code(landing_page.campaign),
       idempotency_key: idempotency_key,
       schema_version_at_submit: landing_page.schema_version
     )
 
     if (ref = payload[:ref]).present?
-      referred_by = Lead.find_by(campaign_id: campaign.id, referral_code: ref)
+      referred_by = Lead.find_by(campaign_id: landing_page.campaign_id, referral_code: ref)
       lead.referred_by_lead_id = referred_by&.id
     end
 
@@ -75,6 +74,15 @@ class Api::LeadsController < ApplicationController
       persist_idempotency(idempotency_key, landing_page, body, 422)
       render json: body, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "not_found" }, status: :not_found
+  end
+
+  # GET /api/landing_pages/:slug/leads
+  def index
+    landing_page = LandingPage.published.find_by!(slug: params[:slug])
+    leads = landing_page.leads.select(:id, :created_at)
+    render json: leads
   rescue ActiveRecord::RecordNotFound
     render json: { error: "not_found" }, status: :not_found
   end
