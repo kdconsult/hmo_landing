@@ -31,14 +31,32 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Show delivery errors in dev for easier debugging.
+  config.action_mailer.raise_delivery_errors = true
 
   # Make template changes take effect immediately.
   config.action_mailer.perform_caching = false
 
   # Set localhost to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "localhost"), port: (ENV["APP_PORT"] || 3000).to_i }
+
+  # Use SMTP in development when credentials/env are present; fallback to :letter_opener or :smtp with localhost if desired.
+  if ENV["SMTP_ADDRESS"].present? || (Rails.application.credentials.dig(:smtp, :address) rescue nil)
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              ENV["SMTP_ADDRESS"].presence || (Rails.application.credentials.dig(:smtp, :address) rescue nil),
+      port:                 (ENV["SMTP_PORT"].presence || (Rails.application.credentials.dig(:smtp, :port) rescue nil) || 587).to_i,
+      domain:               ENV["SMTP_DOMAIN"].presence || (Rails.application.credentials.dig(:smtp, :domain) rescue nil),
+      user_name:            ENV["SMTP_USERNAME"].presence || (Rails.application.credentials.dig(:smtp, :user_name) rescue nil),
+      password:             ENV["SMTP_PASSWORD"].presence || (Rails.application.credentials.dig(:smtp, :password) rescue nil),
+      authentication:       (ENV["SMTP_AUTH"].presence || (Rails.application.credentials.dig(:smtp, :authentication) rescue nil) || :plain).to_sym,
+      enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("SMTP_STARTTLS", "true"))
+    }
+  else
+    # Default to :smtp at localhost:1025 if running MailHog/Mailcatcher, otherwise test logs will show deliveries
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
+  end
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

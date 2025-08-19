@@ -58,16 +58,19 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "example.com" }
+  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "example.com") }
 
-  # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
-  # config.action_mailer.smtp_settings = {
-  #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
-  #   password: Rails.application.credentials.dig(:smtp, :password),
-  #   address: "smtp.example.com",
-  #   port: 587,
-  #   authentication: :plain
-  # }
+  # SMTP delivery configuration via environment or credentials
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV["SMTP_ADDRESS"].presence || (Rails.application.credentials.dig(:smtp, :address) rescue nil) || "smtp.sendgrid.net",
+    port:                 (ENV["SMTP_PORT"].presence || (Rails.application.credentials.dig(:smtp, :port) rescue nil) || 587).to_i,
+    domain:               ENV["SMTP_DOMAIN"].presence || (Rails.application.credentials.dig(:smtp, :domain) rescue nil),
+    user_name:            ENV["SMTP_USERNAME"].presence || (Rails.application.credentials.dig(:smtp, :user_name) rescue nil),
+    password:             ENV["SMTP_PASSWORD"].presence || (Rails.application.credentials.dig(:smtp, :password) rescue nil),
+    authentication:       (ENV["SMTP_AUTH"].presence || (Rails.application.credentials.dig(:smtp, :authentication) rescue nil) || :plain).to_sym,
+    enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("SMTP_STARTTLS", "true"))
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
