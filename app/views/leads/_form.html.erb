@@ -24,7 +24,7 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div class="relative">
-      <%= form.text_field :public_id, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.text_field :public_id, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " ", readonly: lead.persisted? %>
       <%= form.label :public_id, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
     </div>
     <div class="relative">
@@ -33,41 +33,24 @@
     </div>
   </div>
 
-  <div class="my-5">
-    <%= form.label :public_id %>
-    <%= form.text_field :public_id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:public_id].none?, "border-red-400 focus:outline-red-600": lead.errors[:public_id].any?}] %>
-  </div>
+  <!-- Removed duplicate Public ID field -->
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:name].none?, "border-red-400 focus:outline-red-600": lead.errors[:name].any?}] %>
-  </div>
+  <!-- Removed duplicate Name field -->
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div class="relative">
-      <%= form.text_field :email_ciphertext, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
-      <%= form.label :email_ciphertext, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+      <%= form.text_field :email, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :email, "Email", class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
     </div>
     <div class="relative">
-      <%= form.text_field :phone_ciphertext, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
-      <%= form.label :phone_ciphertext, class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
+      <%= form.text_field :phone, class: "peer block w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-6 pb-2 text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all", placeholder: " " %>
+      <%= form.label :phone, "Phone", class: "absolute left-4 top-2 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm pointer-events-none" %>
     </div>
   </div>
 
-  <div class="my-5">
-    <%= form.label :phone_ciphertext %>
-    <%= form.text_field :phone_ciphertext, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:phone_ciphertext].none?, "border-red-400 focus:outline-red-600": lead.errors[:phone_ciphertext].any?}] %>
-  </div>
+  <!-- Removed duplicate Phone field -->
 
-  <div class="my-5">
-    <%= form.label :email_bidx %>
-    <%= form.text_field :email_bidx, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:email_bidx].none?, "border-red-400 focus:outline-red-600": lead.errors[:email_bidx].any?}] %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :phone_bidx %>
-    <%= form.text_field :phone_bidx, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:phone_bidx].none?, "border-red-400 focus:outline-red-600": lead.errors[:phone_bidx].any?}] %>
-  </div>
+  <!-- Removed blind index fields from the form (computed server-side) -->
 
   <div class="flex items-center gap-3 mt-2">
     <%= form.check_box :marketing_consent, class: "rounded border-gray-300 dark:border-gray-700 text-primary focus:ring-primary focus:ring-2 w-5 h-5 bg-white dark:bg-gray-800" %>
@@ -75,98 +58,98 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :consented_at %>
-    <%= form.datetime_field :consented_at, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:consented_at].none?, "border-red-400 focus:outline-red-600": lead.errors[:consented_at].any?}] %>
+    <%= form.label :consented_at, class: "text-quaternary dark:text-white" %>
+    <%= form.datetime_field :consented_at, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:consented_at].none?, "border-red-400 focus:outline-red-600": lead.errors[:consented_at].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="my-5">
-    <%= form.label :consent_source %>
-    <%= form.text_field :consent_source, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:consent_source].none?, "border-red-400 focus:outline-red-600": lead.errors[:consent_source].any?}] %>
+    <%= form.label :consent_source, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :consent_source, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:consent_source].none?, "border-red-400 focus:outline-red-600": lead.errors[:consent_source].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="my-5">
-    <%= form.label :privacy_policy_version %>
-    <%= form.text_field :privacy_policy_version, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:privacy_policy_version].none?, "border-red-400 focus:outline-red-600": lead.errors[:privacy_policy_version].any?}] %>
+    <%= form.label :privacy_policy_version, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :privacy_policy_version, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:privacy_policy_version].none?, "border-red-400 focus:outline-red-600": lead.errors[:privacy_policy_version].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="my-5">
-    <%= form.label :data %>
-    <%= form.text_field :data, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:data].none?, "border-red-400 focus:outline-red-600": lead.errors[:data].any?}] %>
+    <%= form.label :data, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :data, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:data].none?, "border-red-400 focus:outline-red-600": lead.errors[:data].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :utm_source %>
-    <%= form.text_field :utm_source, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_source].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_source].any?}] %>
+    <%= form.label :utm_source, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :utm_source, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_source].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_source].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :utm_medium %>
-    <%= form.text_field :utm_medium, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_medium].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_medium].any?}] %>
+    <%= form.label :utm_medium, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :utm_medium, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_medium].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_medium].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :utm_campaign %>
-    <%= form.text_field :utm_campaign, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_campaign].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_campaign].any?}] %>
+    <%= form.label :utm_campaign, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :utm_campaign, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_campaign].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_campaign].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :utm_term %>
-    <%= form.text_field :utm_term, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_term].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_term].any?}] %>
+    <%= form.label :utm_term, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :utm_term, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_term].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_term].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :utm_content %>
-    <%= form.text_field :utm_content, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_content].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_content].any?}] %>
+    <%= form.label :utm_content, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :utm_content, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:utm_content].none?, "border-red-400 focus:outline-red-600": lead.errors[:utm_content].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :gclid %>
-    <%= form.text_field :gclid, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:gclid].none?, "border-red-400 focus:outline-red-600": lead.errors[:gclid].any?}] %>
+    <%= form.label :gclid, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :gclid, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:gclid].none?, "border-red-400 focus:outline-red-600": lead.errors[:gclid].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :fbclid %>
-    <%= form.text_field :fbclid, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:fbclid].none?, "border-red-400 focus:outline-red-600": lead.errors[:fbclid].any?}] %>
+    <%= form.label :fbclid, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :fbclid, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:fbclid].none?, "border-red-400 focus:outline-red-600": lead.errors[:fbclid].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :msclkid %>
-    <%= form.text_field :msclkid, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:msclkid].none?, "border-red-400 focus:outline-red-600": lead.errors[:msclkid].any?}] %>
+    <%= form.label :msclkid, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :msclkid, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:msclkid].none?, "border-red-400 focus:outline-red-600": lead.errors[:msclkid].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :referrer_url %>
-    <%= form.text_field :referrer_url, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:referrer_url].none?, "border-red-400 focus:outline-red-600": lead.errors[:referrer_url].any?}] %>
+    <%= form.label :referrer_url, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :referrer_url, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:referrer_url].none?, "border-red-400 focus:outline-red-600": lead.errors[:referrer_url].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="my-5">
-    <%= form.label :landing_url %>
-    <%= form.text_field :landing_url, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:landing_url].none?, "border-red-400 focus:outline-red-600": lead.errors[:landing_url].any?}] %>
+    <%= form.label :landing_url, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :landing_url, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:landing_url].none?, "border-red-400 focus:outline-red-600": lead.errors[:landing_url].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="my-5">
-    <%= form.label :user_agent %>
-    <%= form.text_field :user_agent, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:user_agent].none?, "border-red-400 focus:outline-red-600": lead.errors[:user_agent].any?}] %>
+    <%= form.label :user_agent, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :user_agent, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:user_agent].none?, "border-red-400 focus:outline-red-600": lead.errors[:user_agent].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="my-5">
-    <%= form.label :ip_address %>
-    <%= form.text_field :ip_address, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:ip_address].none?, "border-red-400 focus:outline-red-600": lead.errors[:ip_address].any?}] %>
+    <%= form.label :ip_address, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :ip_address, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:ip_address].none?, "border-red-400 focus:outline-red-600": lead.errors[:ip_address].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="my-5">
-    <%= form.label :referral_code %>
-    <%= form.text_field :referral_code, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:referral_code].none?, "border-red-400 focus:outline-red-600": lead.errors[:referral_code].any?}] %>
+    <%= form.label :referral_code, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :referral_code, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:referral_code].none?, "border-red-400 focus:outline-red-600": lead.errors[:referral_code].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="my-5">
-    <%= form.label :idempotency_key %>
-    <%= form.text_field :idempotency_key, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:idempotency_key].none?, "border-red-400 focus:outline-red-600": lead.errors[:idempotency_key].any?}] %>
+    <%= form.label :idempotency_key, class: "text-quaternary dark:text-white" %>
+    <%= form.text_field :idempotency_key, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:idempotency_key].none?, "border-red-400 focus:outline-red-600": lead.errors[:idempotency_key].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="my-5">
-    <%= form.label :schema_version_at_submit %>
-    <%= form.number_field :schema_version_at_submit, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lead.errors[:schema_version_at_submit].none?, "border-red-400 focus:outline-red-600": lead.errors[:schema_version_at_submit].any?}] %>
+    <%= form.label :schema_version_at_submit, class: "text-quaternary dark:text-white" %>
+    <%= form.number_field :schema_version_at_submit, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600": lead.errors[:schema_version_at_submit].none?, "border-red-400 focus:outline-red-600": lead.errors[:schema_version_at_submit].any?}], readonly: lead.persisted? %>
   </div>
 
   <div class="flex flex-col sm:flex-row gap-2 mt-8">

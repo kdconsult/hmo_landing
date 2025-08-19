@@ -81,7 +81,7 @@ class Api::LeadsController < ApplicationController
   # GET /api/landing_pages/:slug/leads
   def index
     landing_page = LandingPage.published.find_by!(slug: params[:slug])
-    leads = landing_page.leads.select(:id, :created_at)
+    leads = landing_page.leads.order(created_at: :desc).select(:id, :created_at)
     render json: leads
   rescue ActiveRecord::RecordNotFound
     render json: { error: "not_found" }, status: :not_found

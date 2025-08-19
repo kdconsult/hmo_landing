@@ -3,7 +3,7 @@ class LandingPagesController < ApplicationController
 
   # GET /landing_pages or /landing_pages.json
   def index
-    @landing_pages = LandingPage.all
+    @landing_pages = LandingPage.order(created_at: :desc)
   end
 
   # GET /landing_pages/1 or /landing_pages/1.json

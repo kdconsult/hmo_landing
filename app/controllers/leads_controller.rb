@@ -3,7 +3,7 @@ class LeadsController < ApplicationController
 
   # GET /leads or /leads.json
   def index
-    @leads = Lead.all
+    @leads = Lead.order(created_at: :desc)
   end
 
   # GET /leads/1 or /leads/1.json
@@ -65,6 +65,37 @@ class LeadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lead_params
-      params.require(:lead).permit(:campaign_id, :landing_page_id, :public_id, :name, :email_ciphertext, :phone_ciphertext, :email_bidx, :phone_bidx, :marketing_consent, :consented_at, :consent_source, :privacy_policy_version, :data, :utm_source, :utm_medium, :utm_campaign, :utm_term, :utm_content, :gclid, :fbclid, :msclkid, :referrer_url, :landing_url, :user_agent, :ip_address, :referral_code, :idempotency_key, :schema_version_at_submit)
+      params.require(:lead).permit(
+        :campaign_id,
+        :landing_page_id,
+        :public_id,
+        :name,
+        # plaintext preferred
+        :email,
+        :phone,
+        # legacy compatibility
+        :email_ciphertext,
+        :phone_ciphertext,
+        :marketing_consent,
+        :consented_at,
+        :consent_source,
+        :privacy_policy_version,
+        :data,
+        :utm_source,
+        :utm_medium,
+        :utm_campaign,
+        :utm_term,
+        :utm_content,
+        :gclid,
+        :fbclid,
+        :msclkid,
+        :referrer_url,
+        :landing_url,
+        :user_agent,
+        :ip_address,
+        :referral_code,
+        :idempotency_key,
+        :schema_version_at_submit
+      )
     end
 end

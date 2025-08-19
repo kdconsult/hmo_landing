@@ -1,0 +1,20 @@
+<div style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;">
+  <h2>New lead captured</h2>
+  <p><strong>Name:</strong> <%= @lead.name %></p>
+  <p><strong>Email:</strong> <%= @lead.email %></p>
+  <p><strong>Phone:</strong> <%= @lead.phone %></p>
+  <p><strong>Campaign:</strong> <%= @lead.campaign&.title %></p>
+  <p><strong>Landing Page:</strong> <%= @lead.landing_page&.slug %></p>
+  <p><strong>Public ID:</strong> <%= @lead.public_id %></p>
+  <p><strong>Created at:</strong> <%= @lead.created_at&.in_time_zone&.to_s(:long) %></p>
+
+  <% if @referred_by.present? %>
+    <p><strong>Source:</strong> Shared link from <%= @referred_by.name %> (referral code <%= @referred_by.referral_code %>)</p>
+  <% else %>
+    <p><strong>Source:</strong> Direct</p>
+  <% end %>
+
+  <% if referral_link.present? %>
+    <p><strong>Lead's referral link:</strong> <a href="<%= referral_link %>"><%= referral_link %></a></p>
+  <% end %>
+</div>

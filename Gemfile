@@ -70,3 +70,6 @@ gem "tailwindcss-ruby", "~> 4.1"
 gem "tailwindcss-rails", "~> 4.3"
 
 gem "phonelib"
+
+# Encryption and blind indexes
+gem "lockbox"

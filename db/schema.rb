@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_18_000000) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_19_120000) do
   create_table "api_idempotency_keys", force: :cascade do |t|
     t.string "key"
     t.string "endpoint"
@@ -91,8 +91,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_000000) do
     t.integer "landing_page_id", null: false
     t.string "public_id", null: false
     t.string "name", null: false
-    t.string "email_ciphertext", null: false
-    t.string "phone_ciphertext", null: false
+    t.text "email_ciphertext"
+    t.text "phone_ciphertext"
     t.string "email_bidx"
     t.string "phone_bidx"
     t.boolean "marketing_consent", default: false, null: false

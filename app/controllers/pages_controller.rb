@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   end
 
   def welcome
-    @landing_pages = LandingPage.published.where(campaign: Campaign.active)
+    @landing_pages = LandingPage.published.where(campaign: Campaign.active).order(created_at: :desc)
 
     render :welcome
   end

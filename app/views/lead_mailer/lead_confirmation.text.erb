@@ -1,0 +1,1 @@
+You're in!\n\nHi <%= @lead.name %>, thanks for joining the waitlist.\n\n<% if @referred_by.present? %>You joined using a friend's invite link. Referrals get priority access!\n\n<% end %>Your 50% off coupon code: <%= coupon_code %>\n\n<% if referral_link.present? %>Share your invite link to move up the list: <%= referral_link %>\n<% end %>\n— The Team\n

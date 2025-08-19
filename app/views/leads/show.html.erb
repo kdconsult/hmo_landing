@@ -25,6 +25,14 @@
           <span class="text-gray-700 dark:text-gray-300"><%= @lead.name %></span>
         </div>
         <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Email:</span>
+          <span class="text-gray-700 dark:text-gray-300"><%= @lead.email %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
+          <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Phone:</span>
+          <span class="text-gray-700 dark:text-gray-300"><%= @lead.phone %></span>
+        </div>
+        <div class="flex items-center gap-4 pt-6">
           <span class="text-lg font-semibold text-quaternary dark:text-white flex-shrink-0">Created:</span>
           <span class="text-gray-700 dark:text-gray-300"><%= l(@lead.created_at, format: :long) %></span>
         </div>

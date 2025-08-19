@@ -1,0 +1,19 @@
+<div style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;">
+  <h2>You're in! 🎉</h2>
+  <p>Hi <strong><%= @lead.name %></strong>, thanks for joining the waitlist.</p>
+
+  <% if @referred_by.present? %>
+    <p>You joined using a friend's invite link. Nice move — referrals get priority access!</p>
+  <% end %>
+
+  <p>Here is your <strong>50% off coupon</strong> for your first year:</p>
+  <p style="font-size: 18px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; background: #f3f4f6; display: inline-block; padding: 8px 12px; border-radius: 8px;"> <%= coupon_code %> </p>
+  <p style="color: #6b7280; font-size: 12px;">Save this email. We'll remind you when early access opens.</p>
+
+  <% if referral_link.present? %>
+    <p>Want to get in sooner? Share your invite link — for every friend who joins, you move up the list:</p>
+    <p><a href="<%= referral_link %>"><%= referral_link %></a></p>
+  <% end %>
+
+  <p>— The Team</p>
+</div>

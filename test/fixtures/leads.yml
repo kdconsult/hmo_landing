@@ -5,10 +5,8 @@ one:
   landing_page: one
   public_id: L1
   name: Alice Example
-  email_ciphertext: <email>
-  phone_ciphertext: <phone>
-  email_bidx: eidx1
-  phone_bidx: pidx1
+  email_ciphertext: alice@example.com
+  phone_ciphertext: "+14155550101"
   marketing_consent: true
   consented_at: 2025-08-17 15:21:31
   consent_source: web
@@ -35,10 +33,8 @@ two:
   landing_page: two
   public_id: L2
   name: Bob Example
-  email_ciphertext: <email>
-  phone_ciphertext: <phone>
-  email_bidx: eidx2
-  phone_bidx: pidx2
+  email_ciphertext: bob@example.com
+  phone_ciphertext: "+447911123456"
   marketing_consent: false
   consented_at: 2025-08-17 15:21:31
   consent_source: web
