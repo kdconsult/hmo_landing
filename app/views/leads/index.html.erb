@@ -15,6 +15,7 @@
       <table class="min-w-full divide-y divide-secondary/20 dark:divide-secondary/60 text-left">
         <thead class="bg-gray-100 dark:bg-gray-800 sticky top-0 z-10">
           <tr>
+            <th class="px-6 py-4 font-semibold text-quaternary dark:text-white whitespace-nowrap">#</th >
             <th class="px-6 py-4 font-semibold text-quaternary dark:text-white whitespace-nowrap">Campaign</th>
             <th class="px-6 py-4 font-semibold text-quaternary dark:text-white whitespace-nowrap">Landing Page</th>
             <th class="px-6 py-4 font-semibold text-quaternary dark:text-white whitespace-nowrap">Name</th>
@@ -25,8 +26,9 @@
         </thead>
         <tbody class="divide-y divide-secondary/20 dark:divide-secondary/60">
           <% if @leads.any? %>
-            <% @leads.each do |lead| %>
+            <% @leads.each_with_index do |lead, index| %>
               <tr class="even:bg-gray-100 even:dark:bg-gray-800 odd:bg-white odd:dark:bg-gray-900 transition-colors">
+                <td class="px-6 py-4 text-gray-900 dark:text-gray-100 font-medium"><%= index + 1 %></td>
                 <td class="px-6 py-4 text-gray-900 dark:text-gray-100 font-medium"><%= lead.campaign&.title %></td>
                 <td class="px-6 py-4 text-gray-700 dark:text-gray-300"><%= lead.landing_page&.headline %></td>
                 <td class="px-6 py-4 text-gray-700 dark:text-gray-300"><%= lead.name %></td>
@@ -55,5 +57,12 @@
         </tbody>
       </table>
     </div>
+
+    <div class="mt-4 rounded-lg p-4 flex justify-between items-center">      
+      <%== pagy_info(@pagy) %>      
+      <%== pagy_nav(@pagy) %>      
+    </div>
+
+    
   </div>
 </div>

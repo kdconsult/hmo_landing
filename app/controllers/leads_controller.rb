@@ -1,9 +1,10 @@
 class LeadsController < ApplicationController
+  include Pagy::Backend
   before_action :set_lead, only: %i[ show edit update destroy ]
 
   # GET /leads or /leads.json
   def index
-    @leads = Lead.order(created_at: :desc)
+    @pagy, @leads = pagy(Lead.order(created_at: :desc), limit: 10)
   end
 
   # GET /leads/1 or /leads/1.json

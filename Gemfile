@@ -73,3 +73,5 @@ gem "phonelib"
 
 # Encryption and blind indexes
 gem "lockbox"
+
+gem "pagy", "~> 9.3" # omit patch digit

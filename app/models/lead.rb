@@ -87,13 +87,13 @@ class Lead < ApplicationRecord
   def compute_email_bidx(value)
     return nil if value.blank?
     pepper = ENV["LEAD_EMAIL_BIDX_PEPPER"].presence || credentials_bidx_pepper(:email) || "dev-insecure-email-pepper"
-    Digest::SHA256.hexdigest([pepper, value].join("--"))
+    Digest::SHA256.hexdigest([ pepper, value ].join("--"))
   end
 
   def compute_phone_bidx(value)
     return nil if value.blank?
     pepper = ENV["LEAD_PHONE_BIDX_PEPPER"].presence || credentials_bidx_pepper(:phone) || "dev-insecure-phone-pepper"
-    Digest::SHA256.hexdigest([pepper, value].join("--"))
+    Digest::SHA256.hexdigest([ pepper, value ].join("--"))
   end
 
   def credentials_bidx_pepper(kind)
@@ -140,7 +140,7 @@ class Lead < ApplicationRecord
     # Expect a 32-byte key in hex (64 chars). Use insecure default in dev/test.
     hex_key = ENV["LEAD_ENCRYPTION_KEY_HEX"].presence || credentials_bidx_pepper(:encryption_key_hex) || (Rails.env.production? ? nil : ("0" * 64))
     raise "LEAD_ENCRYPTION_KEY_HEX not configured" if hex_key.blank?
-    secret = [hex_key].pack("H*")
+    secret = [ hex_key ].pack("H*")
     ActiveSupport::MessageEncryptor.new(secret, cipher: "aes-256-gcm")
   end
 
