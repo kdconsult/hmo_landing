@@ -69,15 +69,15 @@ export default class extends Controller {
     const value = field.value.trim();
     const isRequired = field.hasAttribute('required');
     if (isRequired && !value) {
-      this.showFieldError(field, 'This field is required');
+      this.showFieldError(field, 'Това поле е задължително');
       return false;
     }
     if (field.type === 'email' && value && !this.isValidEmail(value)) {
-      this.showFieldError(field, 'Please enter a valid email address');
+      this.showFieldError(field, 'Моля, въведете валиден имейл адрес');
       return false;
     }
     if (field.type === 'tel' && value && !this.isValidPhone(value)) {
-      this.showFieldError(field, 'Please enter a valid phone number');
+      this.showFieldError(field, 'Моля, въведете валиден телефонен номер');
       return false;
     }
     this.clearFieldError(field);
@@ -113,7 +113,7 @@ export default class extends Controller {
   }
 
   updateSpotsUI() {
-    const spotWord = spotsRemaining === 1 ? 'spot' : 'spots';
+    const spotWord = spotsRemaining === 1 ? 'място' : 'места';
     if (this.heroSpots) this.heroSpots.textContent = spotsRemaining;
     if (this.formSpots) this.formSpots.textContent = spotsRemaining;
     const formWord = document.getElementById('spots-remaining-form-word');
@@ -136,10 +136,10 @@ export default class extends Controller {
     }
     if (this.spotsMessage) {
       if (spotsRemaining <= 10 && spotsRemaining > 0) {
-        this.spotsMessage.textContent = `Only ${spotsRemaining} ${spotWord} left!`;
+        this.spotsMessage.textContent = `Остават само ${spotsRemaining} ${spotWord}!`;
         this.spotsMessage.className = 'text-red-600 font-bold mt-2';
       } else if (spotsRemaining === 0) {
-        this.spotsMessage.textContent = 'All early access spots are filled. Join the waitlist for a chance!';
+        this.spotsMessage.textContent = 'Всички места за ранно достъпване са заети. Присъединете се към списъка за изчакване за шанс!';
         this.spotsMessage.className = 'text-red-600 font-bold mt-2';
       } else {
         this.spotsMessage.textContent = '';
@@ -147,9 +147,9 @@ export default class extends Controller {
     }
     if (this.fomoDiv) {
       if (spotsRemaining <= 10 && spotsRemaining > 0) {
-        this.fomoDiv.textContent = `Hurry! Only ${spotsRemaining} ${spotWord} left. Don’t miss out!`;
+        this.fomoDiv.textContent = `Побързайте! Остават само ${spotsRemaining} ${spotWord}. Не пропускайте!`;
       } else if (spotsRemaining === 0) {
-        this.fomoDiv.textContent = 'All early access spots are filled. You can still join the waitlist for a chance.';
+        this.fomoDiv.textContent = 'Всички места за ранно достъпване са заети. Все още можете да се присъедините към списъка за изчакване за шанс.';
       } else {
         this.fomoDiv.textContent = '';
       }
@@ -163,7 +163,7 @@ export default class extends Controller {
     const submitButton = this.form.querySelector('button[type="submit"]');
     if (submitButton) {
       submitButton.disabled = true;
-      submitButton.innerHTML = '<span class="inline-block animate-spin mr-2">⏳</span> Processing...';
+      submitButton.innerHTML = '<span class="inline-block animate-spin mr-2">⏳</span> Обработване...';
       submitButton.classList.add('opacity-75', 'cursor-not-allowed');
     }
   }
@@ -172,7 +172,7 @@ export default class extends Controller {
     const submitButton = this.form.querySelector('button[type="submit"]');
     if (submitButton) {
       submitButton.disabled = false;
-      submitButton.innerHTML = '🚀 Claim My Spot';
+      submitButton.innerHTML = '🚀 Заявявам си мястото';
       submitButton.classList.remove('opacity-75', 'cursor-not-allowed');
     }
   }
@@ -230,9 +230,9 @@ export default class extends Controller {
             if (errorMsg) errorMsg += ' ';
             errorMsg += data.errors.marketing_consent.join(' ');
           }
-          this.errorDiv.textContent = errorMsg || 'Please check your input.';
+          this.errorDiv.textContent = errorMsg || 'Моля, проверете въведените данни.';
         } else {
-          this.errorDiv.textContent = 'Please check your input.';
+          this.errorDiv.textContent = 'Моля, проверете въведените данни.';
         }
         return;
       }
@@ -252,7 +252,7 @@ export default class extends Controller {
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
     } catch (error) {
-      this.errorDiv.textContent = 'Something went wrong. Please try again.';
+      this.errorDiv.textContent = 'Нещо се обърка. Моля, опитайте отново.';
     } finally {
       this.hideLoadingState();
       currentIdempotencyKey = null;
@@ -270,30 +270,30 @@ export default class extends Controller {
     // Coupon code UI
     let message = '';
     if (spotSecured) {
-      message = `<div class="text-2xl font-bold text-primary mb-2">🎉 Your spot is secured!</div>
-        <div class="mb-4 text-lg text-quaternary">Welcome to the inner circle. Here’s your <span class='text-red-600 font-bold'>50% off coupon</span> for your first year:</div>
+      message = `<div class="text-2xl font-bold text-primary mb-2">🎉 Вашето място е осигурено!</div>
+        <div class="mb-4 text-lg text-quaternary">Добре дошли в кръга на избраните. Ето вашия <span class='text-red-600 font-bold'>купон за 50% отстъпка</span> за първата година:</div>
         <div class="flex items-center justify-center gap-2 mb-4">
           <span class="bg-gray-100 text-quaternary px-4 py-2 rounded-xl font-mono text-lg font-bold" id="coupon-code">${COUPON_CODE}</span>
-          <button class="bg-primary text-white px-3 py-2 rounded-lg font-semibold hover:bg-primary/90 transition" onclick="window.waitlistCopyCoupon('${COUPON_CODE}', event)">Copy</button>
+          <button class="bg-primary text-white px-3 py-2 rounded-lg font-semibold hover:bg-primary/90 transition" onclick="window.waitlistCopyCoupon('${COUPON_CODE}', event)">Копирай</button>
         </div>
-        <div class="text-xs text-gray-500 mb-4">Valid for 1 year. We’ve also sent your coupon to your inbox.</div>`;
+        <div class="text-xs text-gray-500 mb-4">Валиден за 1 година. Изпратихме купона и в пощата ви.</div>`;
     } else {
-      message = `<div class="text-2xl font-bold text-red-600 mb-2">Waitlist Only</div>
-        <div class="mb-4 text-lg text-quaternary">All early access spots are filled. You’re on the waitlist. We’ll notify you if a spot opens. You still get your <span class='text-red-600 font-bold'>50% off coupon</span>:</div>
+      message = `<div class="text-2xl font-bold text-red-600 mb-2">Само списък за изчакване</div>
+        <div class="mb-4 text-lg text-quaternary">Всички места за ранно достъпване са заети. Вие сте в списъка за изчакване. Ще ви уведомим, ако се освободи място. Все още получавате вашия <span class='text-red-600 font-bold'>купон за 50% отстъпка</span>:</div>
         <div class="flex items-center justify-center gap-2 mb-4">
           <span class="bg-gray-100 text-quaternary px-4 py-2 rounded-xl font-mono text-lg font-bold" id="coupon-code">${COUPON_CODE}</span>
-          <button class="bg-primary text-white px-3 py-2 rounded-lg font-semibold hover:bg-primary/90 transition" onclick="window.waitlistCopyCoupon('${COUPON_CODE}', event)">Copy</button>
+          <button class="bg-primary text-white px-3 py-2 rounded-lg font-semibold hover:bg-primary/90 transition" onclick="window.waitlistCopyCoupon('${COUPON_CODE}', event)">Копирай</button>
         </div>
-        <div class="text-xs text-gray-500 mb-4">Valid for 1 year. We’ve also sent your coupon to your inbox.</div>`;
+        <div class="text-xs text-gray-500 mb-4">Валиден за 1 година. Изпратихме купона и в пощата ви.</div>`;
     }
     // Sharing UI
     const shareUrl = window.location.origin + window.location.pathname + `?ref=${currentReferralCode}`;
-    message += `<div class="mt-6 mb-2 text-center text-lg text-primary font-semibold">Increase your chances! Share with friends – for every friend who joins, you move up the list.</div>
+    message += `<div class="mt-6 mb-2 text-center text-lg text-primary font-semibold">Увеличайте шансовете си! Споделете с приятели – за всеки приятел, който се присъедини, вие се издигате в списъка.</div>
       <div class="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4">
-        <button class="bg-septenary text-quaternary px-4 py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition" onclick="window.waitlistShare('${shareUrl}', event)">Share via…</button>
-        <button class="bg-gray-100 text-quaternary px-4 py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition" onclick="window.waitlistCopyLink('${shareUrl}', event)">Copy Invite Link</button>
+        <button class="bg-septenary text-quaternary px-4 py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition" onclick="window.waitlistShare('${shareUrl}', event)">Сподели чрез…</button>
+        <button class="bg-gray-100 text-quaternary px-4 py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition" onclick="window.waitlistCopyLink('${shareUrl}', event)">Копирай линк за покана</button>
       </div>
-      <div class="text-xs text-gray-500">The more friends you invite, the higher your priority!</div>`;
+      <div class="text-xs text-gray-500">Колкото повече приятели поканите, толкова по-висок е вашият приоритет!</div>`;
     this.successDiv.innerHTML = message;
   }
 
@@ -349,7 +349,7 @@ window.waitlistCopyCoupon = function(code, event) {
     event.stopPropagation();
   }
   navigator.clipboard.writeText(code);
-  window.waitlistToast('Coupon code copied!', 'success');
+  window.waitlistToast('Кодът за купон е копиран!', 'success');
 }
 
 window.waitlistShare = function(shareUrl, event) {
@@ -358,13 +358,13 @@ window.waitlistShare = function(shareUrl, event) {
     event.stopPropagation();
   }
   const shareData = {
-    title: 'Join me for Early Access! Only 100 spots!',
-    text: 'I just joined the early access waitlist for this amazing new platform. Use my link to join and we both get priority! ',
+    title: 'Присъединете се към мен за ранно достъпване! Само 100 места!',
+    text: 'Току-що се присъединих към списъка за ранно достъпване за тази невероятна нова платформа. Използвайте линка ми, за да се присъедините и двамата получаваме приоритет! ',
     url: shareUrl
   };
   if (navigator.share) {
     navigator.share(shareData);
-    window.waitlistToast('Share dialog opened!', 'success');
+    window.waitlistToast('Диалогът за споделяне е отворен!', 'success');
   } else {
     window.waitlistCopyLink(shareUrl, event);
   }
@@ -375,7 +375,7 @@ window.waitlistCopyLink = function(shareUrl, event) {
     event.stopPropagation();
   }
   navigator.clipboard.writeText(shareUrl);
-  window.waitlistToast('Invite link copied! Share it with your friends.', 'success');
+  window.waitlistToast('Линкът за покана е копиран! Споделете го с приятелите си.', 'success');
 }
 
 window.waitlistFocusForm = function() {

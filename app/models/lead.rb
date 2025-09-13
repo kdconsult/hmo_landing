@@ -55,7 +55,7 @@ class Lead < ApplicationRecord
     # Phone normalization + blind index + encryption-at-rest
     if self.phone_ciphertext.present?
       plaintext_phone = phone_plaintext
-      parsed = Phonelib.parse(plaintext_phone)
+      parsed = Phonelib.parse(plaintext_phone, "BG")
       if parsed.valid?
         normalized_phone = parsed.e164
         self.phone_bidx = compute_phone_bidx(normalized_phone)

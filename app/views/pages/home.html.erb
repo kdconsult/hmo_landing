@@ -1,8 +1,8 @@
-<!-- Navigation Header -->
+<!-- Навигационен хедър -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-secondary/20">
   <nav class="max-w-6xl mx-auto px-6 py-4" data-controller="landing">
     <div class="flex items-center justify-between">
-      <!-- Logo -->
+      <!-- Лого -->
       <a href="/" class="flex items-center gap-3">
         <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
           <span class="text-white text-xl font-bold">H</span>
@@ -10,39 +10,39 @@
         <span class="text-2xl font-bold text-quaternary">HMO Landing</span>
       </a>
       
-      <!-- Desktop Navigation -->
+      <!-- Десктоп навигация -->
       <div class="hidden md:flex items-center gap-8">
-        <a href="#features" class="text-gray-600 hover:text-primary transition-colors">Features</a>
-        <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Pricing</a>
-        <a href="#about" class="text-gray-600 hover:text-primary transition-colors">About</a>
-        <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
+        <a href="#features" class="text-gray-600 hover:text-primary transition-colors">Функции</a>
+        <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Цени</a>
+        <a href="#about" class="text-gray-600 hover:text-primary transition-colors">За нас</a>
+        <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Контакти</a>
       </div>
       
-      <!-- CTA Buttons -->
+      <!-- CTA бутони -->
       <div class="hidden md:flex items-center gap-4">
         <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-          Get Started
+          Започнете
         </button>
       </div>
       
-      <!-- Mobile Menu Button -->
-      <button aria-label="Toggle mobile menu" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" data-landing-target="hamburger" data-action="click->landing#toggleMobileMenu">
+      <!-- Мобилен мени бутон -->
+      <button aria-label="Превключване на мобилното меню" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" data-landing-target="hamburger" data-action="click->landing#toggleMobileMenu">
         <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
     
-    <!-- Mobile Menu Dropdown -->
+    <!-- Мобилно меню падащо -->
     <div class="mobile-menu hidden md:hidden absolute top-full left-0 right-0 bg-white border-b border-secondary/20 shadow-lg" data-landing-target="mobileMenu">
       <div class="px-6 py-4 space-y-4">
-        <a href="#features" class="block text-gray-600 hover:text-primary transition-colors py-2" data-action="click->landing#closeMobileMenu">Features</a>
-        <a href="#pricing" class="block text-gray-600 hover:text-primary transition-colors py-2" data-action="click->landing#closeMobileMenu">Pricing</a>
-        <a href="#about" class="block text-gray-600 hover:text-primary transition-colors py-2" data-action="click->landing#closeMobileMenu">About</a>
-        <a href="#contact" class="block text-gray-600 hover:text-primary transition-colors py-2" data-action="click->landing#closeMobileMenu">Contact</a>
+        <a href="#features" class="block text-gray-600 hover:text-primary transition-colors py-2" data-action="click->landing#closeMobileMenu">Функции</a>
+        <a href="#pricing" class="block text-gray-600 hover:text-primary transition-colors py-2" data-action="click->landing#closeMobileMenu">Цени</a>
+        <a href="#about" class="block text-gray-600 hover:text-primary transition-colors py-2" data-action="click->landing#closeMobileMenu">За нас</a>
+        <a href="#contact" class="block text-gray-600 hover:text-primary transition-colors py-2" data-action="click->landing#closeMobileMenu">Контакти</a>
         <div class="pt-4 border-t border-gray-200">
           <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="w-full bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-xl font-semibold mb-2">
-            Get Started
+            Започнете
           </button>
         </div>
       </div>
@@ -51,25 +51,25 @@
   </nav>
 </header>
 
-<!-- Hero Section: Waitlist-Driven, Urgency & FOMO -->
+<!-- Главна секция: Списък за изчакване, спешност и FOMO -->
 <section data-controller="landing" class="pt-24 relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-senary via-white to-secondary/20 hero-section">
-  <!-- Background Elements -->
+  <!-- Фонови елементи -->
   <div class="absolute inset-0 overflow-hidden">
     <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
     <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-septenary/10 rounded-full blur-3xl"></div>
   </div>
 
   <div class="relative z-10 text-center max-w-3xl mx-auto px-6">
-    <!-- Urgency Badge -->
+    <!-- Спешност бадж -->
     <div class="relative inline-flex items-center bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
       <span class="w-2 absolute h-2 bg-red-500 rounded-full animate-ping"></span>
-      ⚡ Only 100 Early Access Spots – Act Fast!
+      ⚡ Само 100 места за ранно достъпване – Действайте бързо!
     </div>
 
-    <!-- Spots Remaining Counter & Progress Bar -->
+    <!-- Брояч на оставащите места и лента за прогрес -->
     <div class="flex flex-col items-center mb-8">
       <div class="flex items-center gap-2 mb-2">
-        <span class="text-2xl font-bold text-quaternary">Spots Remaining:</span>
+        <span class="text-2xl font-bold text-quaternary">Оставащи места:</span>
         <span id="spots-remaining" class="text-2xl font-bold text-red-600">100</span>
         <span class="text-lg text-gray-500">/ 100</span>
       </div>
@@ -79,9 +79,9 @@
       <div id="spots-message" class="text-xs text-gray-500 mt-2"></div>
     </div>
 
-    <!-- Main Headline -->
+    <!-- Основен заглавие -->
     <h1 class="text-5xl md:text-6xl font-bold text-quaternary mb-6 leading-tight">
-      Secure Your <span class="bg-gradient-to-r from-primary to-septenary bg-clip-text text-transparent">Early Access</span>
+      Осигурете си <span class="bg-gradient-to-r from-primary to-septenary bg-clip-text text-transparent">ранния достъп</span>
     </h1>
     
     <div class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
@@ -89,118 +89,118 @@
       <%= @ref %>
     </div>
 
-    <!-- Subheadline with FOMO -->
+    <!-- Подзаглавие с FOMO -->
     <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
-      Be one of the <span class="font-semibold text-primary">first 100</span> to unlock exclusive access and a <span class="text-red-600 font-bold">50% off coupon</span> for your first year. Don’t let this once-in-a-lifetime opportunity slip away!
+      Бъдете един от <span class="font-semibold text-primary">първите 100</span>, които ще отключат ексклузивен достъп и <span class="text-red-600 font-bold">50% отстъпка</span> за първата си година. Не позволявайте на тази уникална възможност да ви избяга!
     </p>
     
-    <!-- CTA Button -->
+    <!-- CTA бутон -->
     <div class="flex justify-center mb-10">
       <button type="button" onclick="window.waitlistFocusForm()" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 md:px-10 md:py-5 rounded-2xl text-2xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse-glow">
-        🚀 Claim My Spot
+        🚀 Заявявам си мястото
       </button>
     </div>
 
-    <!-- Social Proof & Urgency -->
+    <!-- Социални доказателства и спешност -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-500">
       <div class="flex items-center gap-2">
         <div class="flex -space-x-2">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
-          <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Потребител" class="w-8 h-8 rounded-full border-2 border-white">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Потребител" class="w-8 h-8 rounded-full border-2 border-white">
+          <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face" alt="Потребител" class="w-8 h-8 rounded-full border-2 border-white">
         </div>
-        <span><span id="joined-today" class="font-bold text-primary">37</span> joined today</span>
+        <span><span id="joined-today" class="font-bold text-primary">37</span> се присъединиха днес</span>
       </div>
       <div class="flex items-center gap-2">
         <div class="flex text-yellow-400">★★★★★</div>
-        <span>4.9/5 rating</span>
+        <span>4.9/5 рейтинг</span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="text-red-600 font-bold">Hurry!</span>
-        <span>Spots are filling up fast</span>
+        <span class="text-red-600 font-bold">Побързайте!</span>
+        <span>Местата се запълват бързо</span>
       </div>
     </div>
-    <div class="mt-2 text-xs text-red-500 font-semibold animate-pulse">Most spots claimed in the last hour!</div>
+    <div class="mt-2 text-xs text-red-500 font-semibold animate-pulse">Повечето места са заети в последния час!</div>
   </div>
 </section>
 
-<!-- Minimal Features Section -->
+<!-- Минимална секция за функции -->
 <section id="features" class="scroll-mt-header py-16 bg-white border-t border-secondary/20">
   <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-quaternary mb-10 text-center">What Makes Us Different?</h2>
+    <h2 class="text-3xl font-bold text-quaternary mb-10 text-center">Какво ни прави различни?</h2>
     <div class="grid md:grid-cols-3 gap-8">
       <div class="flex flex-col items-center text-center">
         <div class="w-14 h-14 flex items-center justify-center rounded-full bg-primary/10 mb-4">
           <span class="text-3xl">⚡</span>
         </div>
-        <h3 class="text-lg font-bold text-quaternary mb-2">Instant Setup</h3>
-        <p class="text-gray-600">Get started in minutes—no technical skills required.</p>
+        <h3 class="text-lg font-bold text-quaternary mb-2">Моментална настройка</h3>
+        <p class="text-gray-600">Започнете за минути – не са необходими технически умения.</p>
       </div>
       <div class="flex flex-col items-center text-center">
         <div class="w-14 h-14 flex items-center justify-center rounded-full bg-primary/10 mb-4">
           <span class="text-3xl">🔒</span>
         </div>
-        <h3 class="text-lg font-bold text-quaternary mb-2">Enterprise-Grade Security</h3>
-        <p class="text-gray-600">Your data is protected with industry-leading security standards.</p>
+        <h3 class="text-lg font-bold text-quaternary mb-2">Сигурност на корпоративно ниво</h3>
+        <p class="text-gray-600">Вашите данни са защитени с водещи в индустрията стандарти за сигурност.</p>
       </div>
       <div class="flex flex-col items-center text-center">
         <div class="w-14 h-14 flex items-center justify-center rounded-full bg-primary/10 mb-4">
           <span class="text-3xl">🤝</span>
         </div>
-        <h3 class="text-lg font-bold text-quaternary mb-2">Human Support</h3>
-        <p class="text-gray-600">Real people, real help—24/7 expert support for every user.</p>
+        <h3 class="text-lg font-bold text-quaternary mb-2">Човешка поддръжка</h3>
+        <p class="text-gray-600">Реални хора, реална помощ – 24/7 експертна поддръжка за всеки потребител.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Minimal Pricing Section -->
+<!-- Минимална секция за цени -->
 <section id="pricing" class="scroll-mt-header py-10 bg-white border-t border-secondary/20">
   <div class="max-w-2xl mx-auto px-6 text-center">
-    <h3 class="text-2xl font-bold text-quaternary mb-2">Transparent Early Access Pricing</h3>
+    <h3 class="text-2xl font-bold text-quaternary mb-2">Прозрачни цени за ранно достъпване</h3>
     <p class="text-lg text-gray-700 mb-2">
-      Early access plans will start at <span class="font-bold text-primary">$29/month</span>.
-      By joining the waitlist, you’ll get a <span class="text-red-600 font-bold">50% discount</span> for your first year.
+      Плановете за ранно достъпване ще започнат от <span class="font-bold text-primary">29 лв./месец</span>.
+      Като се присъедините към списъка за изчакване, ще получите <span class="text-red-600 font-bold">50% отстъпка</span> за първата си година.
     </p>
-    <p class="text-xs text-gray-500">No hidden fees. Cancel anytime. You’ll see full details before you pay.</p>
+    <p class="text-xs text-gray-500">Без скрити такси. Отменете по всяко време. Ще видите пълните детайли преди да платите.</p>
   </div>
 </section>
 
-<!-- Minimal About Section -->
+<!-- Минимална секция "За нас" -->
 <section id="about" class="scroll-mt-header py-8 bg-white border-t border-secondary/20">
   <div class="max-w-2xl mx-auto px-6 text-center">
-    <h2 class="text-xl font-bold text-quaternary mb-2">About Our Platform</h2>
+    <h2 class="text-xl font-bold text-quaternary mb-2">За нашата платформа</h2>
     <p class="text-gray-700">
-      We’re building the fastest, most secure, and most human-friendly SaaS platform for modern teams. Join our early access to help shape the future!
+      Изграждаме най-бързата, най-сигурната и най-дружелюбната SaaS платформа за модерните екипи. Присъединете се към нашето ранно достъпване, за да помогнете да оформим бъдещето!
     </p>
   </div>
 </section>
 
-<!-- Contact Section with Waitlist Form (Refactored for FOMO, Scarcity, and Sharing) -->
+<!-- Секция за контакти със списък за изчакване (Преработена за FOMO, недостигност и споделяне) -->
 <section id="contact" class="scroll-mt-header py-20 bg-gradient-to-br from-senary to-white">
   <div class="max-w-4xl mx-auto px-2 md:px-6">
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold text-quaternary mb-4">
-        Secure Your Spot on the Waitlist
+        Осигурете си място в списъка за изчакване
       </h2>
       <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Only <span id="spots-remaining-form" class="font-bold text-primary">100</span> early access <span id="spots-remaining-form-word">spots</span> available. Join now for a <span class="text-red-600 font-bold">50% off coupon</span> and a chance to be among the first to experience our platform.
+        Само <span id="spots-remaining-form" class="font-bold text-primary">100</span> места за ранно достъпване <span id="spots-remaining-form-word">налични</span>. Присъединете се сега за <span class="text-red-600 font-bold">50% отстъпка</span> и шанс да бъдете сред първите, които ще опитат нашата платформа.
       </p>
     </div>
     <div class="grid gap-12 items-start">
-      <!-- Waitlist Form (centerpiece, no sidebar) -->
+      <!-- Форма за списък за изчакване (централна част, без странична лента) -->
       <div class="bg-white py-8 px-4 md:px-8 rounded-2xl shadow-xl border border-secondary/20">
-        <!-- Dynamic FOMO microcopy -->
+        <!-- Динамичен FOMO микротекст -->
         <div id="fomo-microcopy" class="mb-4 text-center text-lg text-red-600 font-semibold"></div>
-        <!-- Dynamic error messages -->
+        <!-- Динамични съобщения за грешки -->
         <div id="waitlist-error" class="mb-2 text-center text-red-600 font-semibold"></div>
-        <!-- Dynamic post-signup content (success, coupon, sharing) -->
+        <!-- Динамично съдържание след регистрация (успех, купон, споделяне) -->
         <div id="waitlist-success" class="mb-6"></div>
-        <!-- Waitlist Form -->
+        <!-- Форма за списък за изчакване -->
         <form id="waitlist-form" data-controller="waitlist-form" data-action="submit->waitlist-form#submitForm" data-slug="<%= @landing_page.slug %>" class="space-y-6">
           <div>
             <label for="full_name" class="block text-sm font-medium text-gray-700 mb-2">
-              Full Name *
+              Пълно име *
             </label>
             <input 
               type="text" 
@@ -208,12 +208,12 @@
               name="full_name" 
               required
               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-              placeholder="Enter your full name"
+              placeholder="Въведете пълното си име"
             >
           </div>
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-              Email Address *
+              Имейл адрес *
             </label>
             <input 
               type="email" 
@@ -221,12 +221,12 @@
               name="email" 
               required
               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-              placeholder="Enter your email address"
+              placeholder="Въведете имейл адреса си"
             >
           </div>
           <div>
             <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
-              Phone Number *
+              Телефонен номер *
             </label>
             <input 
               type="tel" 
@@ -235,54 +235,54 @@
               required
               pattern="[0-9\-\+\s\(\)]{7,}"
               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-              placeholder="Enter your phone number"
+              placeholder="Въведете телефонния си номер"
             >
           </div>
           <div>
             <label for="company" class="block text-sm font-medium text-gray-700 mb-2">
-              Company Name
+              Име на компанията
             </label>
             <input 
               type="text" 
               id="company" 
               name="company" 
               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-              placeholder="Enter your company name"
+              placeholder="Въведете името на компанията си"
             >
           </div>
           <div>
             <label for="role" class="block text-sm font-medium text-gray-700 mb-2">
-              Job Role
+              Работна позиция
             </label>
             <select 
               id="role" 
               name="role" 
               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
             >
-              <option value="">Select your role</option>
-              <option value="founder">Founder/CEO</option>
-              <option value="executive">Executive/C-Level</option>
-              <option value="manager">Manager/Director</option>
-              <option value="individual">Individual Contributor</option>
-              <option value="other">Other</option>
+              <option value="">Изберете позицията си</option>
+              <option value="founder">Основател/CEO</option>
+              <option value="executive">Изпълнителен директор/C-Level</option>
+              <option value="manager">Мениджър/Директор</option>
+              <option value="individual">Индивидуален сътрудник</option>
+              <option value="other">Друго</option>
             </select>
           </div>
           <div>
             <label for="use_case" class="block text-sm font-medium text-gray-700 mb-2">
-              Primary Use Case
+              Основна употреба
             </label>
             <select 
               id="use_case" 
               name="use_case" 
               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
             >
-              <option value="">Select primary use case</option>
-              <option value="automation">Business Process Automation</option>
-              <option value="analytics">Data Analytics & Insights</option>
-              <option value="collaboration">Team Collaboration</option>
-              <option value="customer">Customer Management</option>
-              <option value="operations">Operations Management</option>
-              <option value="other">Other</option>
+              <option value="">Изберете основната употреба</option>
+              <option value="automation">Автоматизация на бизнес процеси</option>
+              <option value="analytics">Данни и анализи</option>
+              <option value="collaboration">Сътрудничество в екипа</option>
+              <option value="customer">Управление на клиенти</option>
+              <option value="operations">Управление на операциите</option>
+              <option value="other">Друго</option>
             </select>
           </div>
           <div class="flex items-start gap-3">
@@ -293,22 +293,22 @@
               class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2"
             >
             <label for="newsletter" class="text-sm text-gray-600">
-              I want to receive updates about product launches, exclusive offers, and industry insights.
+              Искам да получавам актуализации за пускане на продукти, ексклузивни оферти и прозрения за индустрията.
             </label>
           </div>
           <button 
             type="submit" 
             class="w-full bg-primary hover:bg-primary/90 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xl animate-pulse-glow"
           >
-            🚀 Claim My Spot
+            🚀 Заявявам си мястото
           </button>
           <p class="text-xs text-gray-500 text-center">
-            By joining the waitlist, you agree to our 
-            <a href="#" class="text-primary hover:underline">Privacy Policy</a> and 
-            <a href="#" class="text-primary hover:underline">Terms of Service</a>.
+            Като се присъедините към списъка за изчакване, вие се съгласявате с нашата 
+            <a href="#" class="text-primary hover:underline">Политика за поверителност</a> и 
+            <a href="#" class="text-primary hover:underline">Условия за ползване</a>.
           </p>
           <p class="text-xs text-gray-500 text-center mt-2">
-            We respect your privacy. No spam, ever.
+            Уважаваме вашата поверителност. Без спам, никога.
           </p>
         </form>
       </div>
@@ -316,142 +316,142 @@
   </div>
 </section>
 
-  <!-- Final CTA Section -->
+  <!-- Финална CTA секция -->
 <section class="py-20 bg-gradient-to-br from-quaternary to-quinary text-white">
   <div class="max-w-4xl mx-auto px-6 text-center">
     <h2 class="text-4xl font-bold mb-6">
-      Ready to Join the Future?
+      Готови ли сте да се присъедините към бъдещето?
     </h2>
     <p class="text-xl text-secondary mb-8">
-      Be among the first to experience our revolutionary platform. Join the waitlist now and get exclusive early access.
+      Бъдете сред първите, които ще опитат нашата революционна платформа. Присъединете се към списъка за изчакване сега и получете ексклузивен раннен достъп.
     </p>
     
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
       <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-        🚀 Join the Waitlist Now
+        🚀 Присъединете се към списъка за изчакване сега
       </button>
       <button class="border-2 border-white text-white hover:bg-white hover:text-quaternary px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300">
-        📞 Schedule Demo
+        📞 Насрочете демо
       </button>
     </div>
     
     <div class="text-secondary text-sm">
-      No credit card required • Exclusive early access • Priority support
+      Не се изисква кредитна карта • Ексклузивен раннен достъп • Приоритетна поддръжка
     </div>
   </div>
 </section>
 
-<!-- FAQ Section -->
+<!-- Секция с често задавани въпроси -->
 <section id="faq" class="scroll-mt-header py-20 bg-gradient-to-br from-white to-senary border-t border-secondary/20">
   <div class="max-w-3xl mx-auto px-2 md:px-6">
-    <h2 class="text-4xl font-bold text-quaternary mb-10 text-center">Frequently Asked Questions</h2>
+    <h2 class="text-4xl font-bold text-quaternary mb-10 text-center">Често задавани въпроси</h2>
     <div class="space-y-2">
       <details class="group border border-secondary/30 rounded-xl p-4 bg-white transition-shadow hover:shadow-lg">
         <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-quaternary group-open:text-primary transition-colors">
-          How does the waitlist work?
+          Как работи списъкът за изчакване?
           <span class="ml-2 text-primary group-open:rotate-90 transition-transform">▶</span>
         </summary>
         <div class="mt-2 text-gray-700">
-          We have only 100 early access spots. If you claim a spot before they’re gone, your access is guaranteed. If all spots are filled, you’ll be added to the waitlist and notified if a spot opens up. The more friends you refer, the higher your priority!
+          Имаме само 100 места за ранно достъпване. Ако заявите място преди да свършат, вашият достъп е гарантиран. Ако всички места са заети, ще бъдете добавени към списъка за изчакване и уведомени, ако се освободи място. Колкото повече приятели препоръчате, толкова по-висок е вашият приоритет!
         </div>
       </details>
       <details class="group border border-secondary/30 rounded-xl p-4 bg-white transition-shadow hover:shadow-lg">
         <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-quaternary group-open:text-primary transition-colors">
-          How do I use my coupon?
+          Как да използвам купона си?
           <span class="ml-2 text-primary group-open:rotate-90 transition-transform">▶</span>
         </summary>
         <div class="mt-2 text-gray-700">
-          After you join, you’ll receive a 50% off coupon code valid for your first year. You can use this code during checkout when early access opens. We’ll also email it to you for safekeeping.
+          След като се присъедините, ще получите код за отстъпка от 50%, валиден за първата си година. Можете да използвате този код при плащане, когато се отвори ранният достъп. Ще го изпратим и по имейл за сигурност.
         </div>
       </details>
       <details class="group border border-secondary/30 rounded-xl p-4 bg-white transition-shadow hover:shadow-lg">
         <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-quaternary group-open:text-primary transition-colors">
-          What if I don’t get in?
+          Какво ако не вляза?
           <span class="ml-2 text-primary group-open:rotate-90 transition-transform">▶</span>
         </summary>
         <div class="mt-2 text-gray-700">
-          If all 100 spots are filled, you’ll be on the waitlist. We’ll notify you as soon as a spot opens up. You’ll still receive your coupon code and can use it when you get access.
+          Ако всичките 100 места са заети, ще бъдете в списъка за изчакване. Ще ви уведомим веднага щом се освободи място. Ще получите и кода си за отстъпка и ще можете да го използвате, когато получите достъп.
         </div>
       </details>
       <details class="group border border-secondary/30 rounded-xl p-4 bg-white transition-shadow hover:shadow-lg">
         <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-quaternary group-open:text-primary transition-colors">
-          How do referrals increase my chances?
+          Как препоръките увеличават шансовете ми?
           <span class="ml-2 text-primary group-open:rotate-90 transition-transform">▶</span>
         </summary>
         <div class="mt-2 text-gray-700">
-          For every friend who joins using your invite link, you move up the waitlist. The more you share, the sooner you’ll get access if a spot opens up!
+          За всеки приятел, който се присъедини чрез вашата препоръка, вие се издигате в списъка за изчакване. Колкото повече споделяте, толкова по-скоро ще получите достъп, ако се освободи място!
         </div>
       </details>
       <details class="group border border-secondary/30 rounded-xl p-4 bg-white transition-shadow hover:shadow-lg">
         <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-quaternary group-open:text-primary transition-colors">
-          How will I know if I get early access?
+          Как ще разбера дали получавам раннен достъп?
           <span class="ml-2 text-primary group-open:rotate-90 transition-transform">▶</span>
         </summary>
         <div class="mt-2 text-gray-700">
-          We’ll send you an email as soon as your spot is secured or if you move up from the waitlist. Make sure to check your inbox for updates!
+          Ще ви изпратим имейл веднага щом мястото ви е осигурено или ако се издигнете от списъка за изчакване. Не забравяйте да проверявате пощата си за актуализации!
         </div>
       </details>
       <details class="group border border-secondary/30 rounded-xl p-4 bg-white transition-shadow hover:shadow-lg">
         <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-quaternary group-open:text-primary transition-colors">
-          How is my data used?
+          Как се използват данните ми?
           <span class="ml-2 text-primary group-open:rotate-90 transition-transform">▶</span>
         </summary>
         <div class="mt-2 text-gray-700">
-          We only use your information to notify you about early access, your coupon, and important updates. We never share your data with third parties, and you can unsubscribe at any time.
+          Използваме информацията ви само за да ви уведомяваме за ранния достъп, купона ви и важни актуализации. Никога не споделяме данните ви с трети страни и можете да се отпишете по всяко време.
         </div>
       </details>
       <details class="group border border-secondary/30 rounded-xl p-4 bg-white transition-shadow hover:shadow-lg">
         <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-quaternary group-open:text-primary transition-colors">
-          What is your satisfaction guarantee?
+          Каква е вашата гаранция за удовлетвореност?
           <span class="ml-2 text-primary group-open:rotate-90 transition-transform">▶</span>
         </summary>
         <div class="mt-2 text-gray-700">
-          We’re confident you’ll love our platform. If you’re not 100% satisfied within your first 30 days, let us know and we’ll make it right—no questions asked.
+          Уверени сме, че ще харесате нашата платформа. Ако не сте 100% доволни в първите си 30 дни, кажете ни и ще го поправим – без въпроси.
         </div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- Footer (minimal, focused) -->
+<!-- Футър (минимален, фокусиран) -->
 <footer class="py-12 bg-quaternary text-white border-t border-quinary/40">
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid md:grid-cols-3 gap-8 mb-8">
       <div>
-        <h4 class="text-xl font-bold mb-4">Company</h4>
+        <h4 class="text-xl font-bold mb-4">Компания</h4>
         <ul class="space-y-2 text-secondary">
-          <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
-          <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#about" class="hover:text-white transition-colors">За нас</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">ЧЗВ</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-xl font-bold mb-4">Support</h4>
+        <h4 class="text-xl font-bold mb-4">Поддръжка</h4>
         <ul class="space-y-2 text-secondary">
-          <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
-          <li><a href="#faq" class="hover:text-white transition-colors">Help Center</a></li>
+          <li><a href="#contact" class="hover:text-white transition-colors">Контакти</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">Център за помощ</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-xl font-bold mb-4">Legal & Privacy</h4>
+        <h4 class="text-xl font-bold mb-4">Правни и поверителност</h4>
         <ul class="space-y-2 text-secondary">
-          <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Политика за поверителност</a></li>
         </ul>
       </div>
     </div>
     <div class="border-t border-quinary pt-8 text-center text-secondary">
-      <p>&copy; 2025 Your Company. All rights reserved. | <a href="#contact" class="text-primary hover:underline">Contact Support</a></p>
+      <p>&copy; 2025 Вашата компания. Всички права запазени. | <a href="#contact" class="text-primary hover:underline">Контактна поддръжка</a></p>
     </div>
   </div>
 </footer>
 
-<!-- Floating Action Button -->
+<!-- Плаващ бутон за действие -->
 <div class="fixed bottom-8 right-8 z-40">
   <button class="bg-primary hover:bg-primary/90 text-white w-16 h-16 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center">
     <span class="text-2xl">💬</span>
   </button>
 </div>
 
-<!-- Scroll to Top Button -->
+<!-- Бутон за превъртане нагоре -->
 <button id="scrollToTop" class="fixed bottom-8 left-8 z-40 bg-quaternary hover:bg-quaternary/90 text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 opacity-0 pointer-events-none">
   <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
