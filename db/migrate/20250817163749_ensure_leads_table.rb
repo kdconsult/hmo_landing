@@ -48,8 +48,8 @@ class EnsureLeadsTable < ActiveRecord::Migration[8.0]
     add_index :leads, :phone_bidx, if_not_exists: true
     add_index :leads, :campaign_id, if_not_exists: true
     add_index :leads, :landing_page_id, if_not_exists: true
-    add_index :leads, [:campaign_id, :landing_page_id, :created_at], name: "index_leads_on_dims_and_time", if_not_exists: true
-    add_index :leads, [:campaign_id, :referral_code], unique: true, name: "index_leads_on_campaign_id_and_referral_code", if_not_exists: true
+    add_index :leads, [ :campaign_id, :landing_page_id, :created_at ], name: "index_leads_on_dims_and_time", if_not_exists: true
+    add_index :leads, [ :campaign_id, :referral_code ], unique: true, name: "index_leads_on_campaign_id_and_referral_code", if_not_exists: true
 
     # Self-referential FK for referrals
     add_foreign_key :leads, :leads, column: :referred_by_lead_id, on_delete: :nullify if foreign_key_absent?(:leads, :referred_by_lead_id)

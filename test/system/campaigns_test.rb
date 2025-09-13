@@ -28,12 +28,12 @@ class CampaignsTest < ApplicationSystemTestCase
 
   test "should update Campaign" do
     visit campaign_url(@campaign)
-    click_on "Edit this campaign", match: :first
+    click_on "Edit", match: :first
 
     check "Active" if @campaign.active
     fill_in "Body", with: @campaign.body
     fill_in "End date", with: @campaign.end_date
-    fill_in "Slug", with: @campaign.slug
+    fill_in "Slug", with: @campaign.slug + SecureRandom.hex(4)
     fill_in "Start date", with: @campaign.start_date
     fill_in "Title", with: @campaign.title
     click_on "Update Campaign"
@@ -44,7 +44,7 @@ class CampaignsTest < ApplicationSystemTestCase
 
   test "should destroy Campaign" do
     visit campaign_url(@campaign)
-    accept_confirm { click_on "Destroy this campaign", match: :first }
+    accept_confirm { click_on "Delete", match: :first }
 
     assert_text "Campaign was successfully destroyed"
   end

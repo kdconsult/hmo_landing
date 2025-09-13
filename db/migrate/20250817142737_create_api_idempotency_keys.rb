@@ -11,7 +11,7 @@ class CreateApiIdempotencyKeys < ActiveRecord::Migration[8.0]
       t.timestamps
     end
     add_index :api_idempotency_keys, :key, unique: true
-    add_index :api_idempotency_keys, [:endpoint, :request_hash]
+    add_index :api_idempotency_keys, [ :endpoint, :request_hash ]
     add_index :api_idempotency_keys, :expires_at
   end
 end
