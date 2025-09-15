@@ -16,10 +16,10 @@ class LeadsTest < ApplicationSystemTestCase
 
     select @lead.campaign.title, from: "Campaign"
     select @lead.landing_page.headline, from: "Landing page"
-    fill_in "Public", with: @lead.public_id
+    fill_in "Public", with: @lead.public_id + SecureRandom.hex(3)
     fill_in "Name", with: @lead.name
-    fill_in "Email ciphertext", with: @lead.email_ciphertext
-    fill_in "Phone ciphertext", with: @lead.phone_ciphertext
+    fill_in "Email", with: @lead.email_ciphertext
+    fill_in "Phone", with: @lead.phone_ciphertext
     check "Marketing consent" if @lead.marketing_consent
     fill_in "Consent source", with: @lead.consent_source
     fill_in "Privacy policy version", with: @lead.privacy_policy_version
@@ -36,7 +36,7 @@ class LeadsTest < ApplicationSystemTestCase
     fill_in "Landing url", with: @lead.landing_url
     fill_in "User agent", with: @lead.user_agent
     fill_in "Ip address", with: @lead.ip_address
-    fill_in "Referral code", with: @lead.referral_code
+    fill_in "Referral code", with: @lead.referral_code + SecureRandom.hex(3)
     fill_in "Idempotency key", with: @lead.idempotency_key
     fill_in "Schema version at submit", with: @lead.schema_version_at_submit
     click_on "Create Lead"
@@ -53,8 +53,8 @@ class LeadsTest < ApplicationSystemTestCase
     select @lead.landing_page.headline, from: "Landing page"
     fill_in "Public", with: @lead.public_id
     fill_in "Name", with: @lead.name
-    fill_in "Email ciphertext", with: @lead.email_ciphertext
-    fill_in "Phone ciphertext", with: @lead.phone_ciphertext
+    fill_in "Email", with: @lead.email_ciphertext
+    fill_in "Phone", with: @lead.phone_ciphertext
     check "Marketing consent" if @lead.marketing_consent
     fill_in "Consent source", with: @lead.consent_source
     fill_in "Privacy policy version", with: @lead.privacy_policy_version

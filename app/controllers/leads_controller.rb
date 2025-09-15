@@ -29,8 +29,8 @@ class LeadsController < ApplicationController
         format.html { redirect_to @lead, notice: "Lead was successfully created." }
         format.json { render :show, status: :created, location: @lead }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @lead.errors, status: :unprocessable_content }
       end
     end
   end
@@ -42,8 +42,8 @@ class LeadsController < ApplicationController
         format.html { redirect_to @lead, notice: "Lead was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @lead }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @lead.errors, status: :unprocessable_content }
       end
     end
   end

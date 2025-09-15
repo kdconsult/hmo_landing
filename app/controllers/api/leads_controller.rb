@@ -28,7 +28,7 @@ class Api::LeadsController < ApplicationController
     utm = payload[:utm] || {}
 
     if ActiveModel::Type::Boolean.new.cast(core[:marketing_consent]) != true
-      render json: { errors: { marketing_consent: [ "must be accepted" ] } }, status: :unprocessable_entity and return
+      render json: { errors: { marketing_consent: [ "must be accepted" ] } }, status: :unprocessable_content and return
     end
 
     lead = Lead.new(
@@ -72,7 +72,7 @@ class Api::LeadsController < ApplicationController
     else
       body = { errors: lead.errors }
       persist_idempotency(idempotency_key, landing_page, body, 422)
-      render json: body, status: :unprocessable_entity
+      render json: body, status: :unprocessable_content
     end
   rescue ActiveRecord::RecordNotFound
     render json: { error: "not_found" }, status: :not_found

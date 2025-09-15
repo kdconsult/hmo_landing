@@ -3,6 +3,7 @@ require "application_system_test_case"
 class LandingPagesTest < ApplicationSystemTestCase
   setup do
     @landing_page = landing_pages(:one)
+    @campaign = Campaign.create!(title: "Test Campaign 2", slug: "test-campaign-2", body: "Test body", start_date: Date.today, end_date: Date.today, active: false)
   end
 
   test "visiting the index" do
@@ -14,13 +15,14 @@ class LandingPagesTest < ApplicationSystemTestCase
     visit landing_pages_url
     click_on "New landing page"
 
-    select @landing_page.campaign.title, from: "Campaign"
-    fill_in "Slug", with: @landing_page.slug
-    fill_in "Headline", with: @landing_page.headline
-    fill_in "Subheadline", with: @landing_page.subheadline
-    fill_in "Body", with: @landing_page.body
-    fill_in "Primary cta label", with: @landing_page.primary_cta_label
-    fill_in "Primary cta url", with: @landing_page.primary_cta_url
+    select @campaign.title, from: "Campaign"
+    fill_in "Slug", with: "unique-test-slug"
+    fill_in "Headline", with: "Test Headline"
+    fill_in "Subheadline", with: "Test Subheadline"
+    fill_in "Body", with: "Test body content"
+    fill_in "Primary cta label", with: "Test CTA"
+    fill_in "Primary cta url", with: "https://test.com"
+    fill_in "Template", with: "test-template"
     select @landing_page.status, from: "Status"
     fill_in "Schema", with: @landing_page.schema.to_json
     fill_in "Schema version", with: @landing_page.schema_version
@@ -35,7 +37,7 @@ class LandingPagesTest < ApplicationSystemTestCase
     visit landing_page_url(@landing_page)
     click_on "Edit", match: :first
 
-    select @landing_page.campaign.title, from: "Campaign"
+    select @campaign.title, from: "Campaign"
     fill_in "Slug", with: @landing_page.slug
     fill_in "Headline", with: @landing_page.headline
     fill_in "Subheadline", with: @landing_page.subheadline
